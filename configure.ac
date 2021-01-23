@@ -1,5 +1,5 @@
 AC_PREREQ(2.60)
-AC_INIT([libfpx],[1.3.1-10],[http://www.imagemagick.org],[libfpx])
+AC_INIT([libfpx],[1.3.1-10],[https://imagemagick.org],[libfpx])
 AC_CONFIG_SRCDIR(fpx/buffdesc.h)
 AC_CONFIG_AUX_DIR([config])
 AC_CONFIG_MACRO_DIR([m4])
