@@ -65,7 +65,7 @@
 
 // value to define if the file is to be read/written in Intel mode or not
 # if defined(_UNIX)
-#  ifdef __linux__
+#  if defined(__linux__) || defined(__illumos__)
 #   include <endian.h>
 #  elif defined(__sun)
 #   include <solaris.h>
