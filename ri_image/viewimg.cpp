@@ -103,10 +103,10 @@ ViewWorld::~ViewWorld ()
 
 FPXStatus ViewWorld::AddImage (ref_FicNom refNom)
 {
-  register FPXStatus status = FPX_OK;
+  FPXStatus status = FPX_OK;
   ViewImage* image;
 
-  // Open Image file (among other thingsÐ)
+  // Open Image file (among other things)
   if ((image = new PFlashPixImageView (refNom,NULL)) == NULL) {
     status = FPX_FILE_NOT_FOUND;    // Best guess as to why this failed
     goto end;
@@ -143,10 +143,10 @@ end:
 
 FPXStatus ViewWorld::AddImage (PRIImage* theImage)
 {
-  register FPXStatus status = FPX_OK;
+  FPXStatus status = FPX_OK;
   ViewImage* image;
 
-  // Open image file (among other thingsÐ)
+  // Open image file (among other things)
   if ((image = new ViewImage (theImage)) == NULL) {
     status = FPX_FILE_NOT_FOUND;    // Best guess as to why this failed
     goto end;
@@ -184,7 +184,7 @@ end:
 
 FPXStatus ViewWorld::AddImage (ViewImage* image)
 {
-  register FPXStatus status = FPX_OK;
+  FPXStatus status = FPX_OK;
 
   // Test if the image file is successfully opened, exit if not
   if (image->FileStatus() != 0) {
@@ -216,7 +216,7 @@ end:
 
 FPXStatus ViewWorld::DeleteImage (ViewImage* theImage, Boolean doNotCloseFile)
 {
-  register FPXStatus status = FPX_OK;
+  FPXStatus status = FPX_OK;
   ViewImage* image;
 
   // Error if list empty
@@ -237,7 +237,7 @@ FPXStatus ViewWorld::DeleteImage (ViewImage* theImage, Boolean doNotCloseFile)
     goto end;
   }
   
-  // delete image from list : don't forget to set current to a valid value if necessaryÐ
+  // delete image from list : don't forget to set current to a valid value if necessary
   if ((image == first) && (image == last)) {  // if list contain a single image
     first   = NULL;
     last  = NULL;
@@ -276,7 +276,7 @@ end:
 
 long ViewWorld::First (ViewImage** theImage)
 {
-  register long status = 0;
+  long status = 0;
   
   *theImage = first;  // Get first element of the list
   current = first;  // Set current pointer
@@ -289,7 +289,7 @@ long ViewWorld::First (ViewImage** theImage)
 
 long ViewWorld::Last (ViewImage** theImage)
 {
-  register long status = 0;
+  long status = 0;
   
   *theImage = last; // Get last element of the list
   current = last;   // Set current pointer
@@ -302,7 +302,7 @@ long ViewWorld::Last (ViewImage** theImage)
 
 long ViewWorld::Next (ViewImage** theImage)
 {
-  register long status = 0;
+  long status = 0;
   
   if (!first)           // Warning if list empty
     status = 1;
@@ -320,7 +320,7 @@ long ViewWorld::Next (ViewImage** theImage)
 
 long ViewWorld::Previous (ViewImage** theImage)
 {
-  register long status = 0;
+  long status = 0;
   
   if (!first)             // Warning if list empty
     status = 1;
@@ -338,7 +338,7 @@ long ViewWorld::Previous (ViewImage** theImage)
 
 long ViewWorld::Current (ViewImage** theImage)
 {
-  register long status = 0;
+  long status = 0;
   
   if (!current)       // Warning if list empty
     status = 1;
@@ -484,7 +484,7 @@ ViewImage::~ViewImage ()
 
 FPXStatus ViewImage::FileStatus ()
 {
-  register FPXStatus status = FPX_OK;
+  FPXStatus status = FPX_OK;
   
   // test if image exist (has been opened)
   if (image == NULL)
@@ -497,7 +497,7 @@ FPXStatus ViewImage::FileStatus ()
 
 FPXStatus ViewImage::UseAlphaChannel (Boolean useAlpha)
 {
-  register FPXStatus status = FPX_OK;
+  FPXStatus status = FPX_OK;
   
   // test if image exist (has been opened)  
   if (!(status = FileStatus())) {
@@ -518,7 +518,7 @@ FPXStatus ViewImage::UseAlphaChannel (Boolean useAlpha)
 
 FPXStatus ViewImage::InvertAlphaChannel (Boolean inverseAlpha)
 {
-  register FPXStatus status = FPX_OK;
+  FPXStatus status = FPX_OK;
   
   // test if image exist (has been opened)  
   if (!(status = FileStatus())) {
@@ -550,7 +550,7 @@ FPXStatus ViewImage::SetImageSize (float theWidth, float theHeight)
     float previousHeight = y1 - y0;
     
     // Rescale the image
-    GetOrigin (&x0, &y0);             // CAUTION : x0, y0 are in unit but Scale() use unitÐ
+    GetOrigin (&x0, &y0);             // CAUTION : x0, y0 are in unit but Scale() use unit
     Scale (x0, y0, theWidth/previousWidth, theHeight/previousHeight);
   }
   return FPX_OK;
@@ -1275,16 +1275,16 @@ FPXStatus ViewWindow::ReadSample (long i0, long j0, Pixel* sample, FPXBaselineCo
   } else {
     if (GtheSystemToolkit->interleaving == Interleaving_Channel) {
       // Pixel by pixel if planes specified and there is only one channel in the output buffer
-      register long j;
-      register unsigned char *src, *dst;
+      long j;
+      unsigned char *src, *dst;
       src = (unsigned char *)(sampleTmp) + plan; 
       dst = (unsigned char *)(sample);
       for (j=0; j<SAMPLE_WIDTH*SAMPLE_WIDTH;j++,dst++,src+=sizeof(Pixel))
         *dst = *src;
     } else {
       // Pixel by pixel if planes specified
-      register long j;
-      register unsigned char *src, *dst;
+      long j;
+      unsigned char *src, *dst;
       src = (unsigned char *)(sampleTmp) + plan; 
       dst = (unsigned char *)(sample)  + plan;
       for (j=0; j<SAMPLE_WIDTH*SAMPLE_WIDTH;j++,src+=sizeof(Pixel),dst+=sizeof(Pixel))
@@ -1379,7 +1379,7 @@ FPXStatus ViewWindow::Zoom (float zoomRatio)
   width /= zoomRatio;
   height /= zoomRatio;
   
-  // Note that pix_width and pix_height are not changed through zoom effectÐ
+  // Note that pix_width and pix_height are not changed through zoom effect
   // Update Window state
   modifiedWindow = TRUE;
   
@@ -1533,8 +1533,8 @@ RectangleMv ViewState::GetRectangle (long fromState)
   RectangleMv result;
   
   if (fromState < stateNumber) {                  // If asking for an old state
-    if ((fromState - stateNumber) > ViewStateNumber)      // If state to oldÐ
-      result = largestRectangle;                // Ðreturn largest rectangle
+    if ((fromState - stateNumber) > ViewStateNumber)      // If state to old
+      result = largestRectangle;                // return largest rectangle
     else {
       ViewWorldRect* curModRectangle = lastModRectangle;
       result = curModRectangle->rectangle;          // make union of all previous
@@ -1545,7 +1545,7 @@ RectangleMv ViewState::GetRectangle (long fromState)
     }
   }
   
-  // Note : if "fromState" >= "stateNumber" the returned rectangle will be equal to 0.0 everywhereÐ
+  // Note : if "fromState" >= "stateNumber" the returned rectangle will be equal to 0.0 everywhere
   
   return result;
 }

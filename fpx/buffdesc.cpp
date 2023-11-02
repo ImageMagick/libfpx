@@ -108,7 +108,7 @@ static void Shift8BitsRight (unsigned char* buffer, long size)
 // Copy a byte and erase its ancient address be 2 bytes on the right (don't move the rest)
 static void MoveByteRightBy2(unsigned char* buffer, long size)
 {
-  register unsigned char* next;
+  unsigned char* next;
   next = buffer + 2;
   while (size--) {
     *next = *buffer;
@@ -121,7 +121,7 @@ static void MoveByteRightBy2(unsigned char* buffer, long size)
 // Copy a byte and erase its ancient address be 2 bytes on the left (don't move the rest)
 static void MoveByteLeftBy2(unsigned char* buffer, long size)
 {
-  register unsigned char* next;
+  unsigned char* next;
   next = buffer - 2;
   while (size--) {
     *next = *buffer;
@@ -451,16 +451,16 @@ void FPXBufferDesc::UpdateBuffer ()
   // If the pixels are stored in a local buffer, they have to be transfered from the
   // image descriptor to the buffer
   if (localBuffer) {
-    register long i, j;
+    long i, j;
     
-    register long incLine0 = FPXdesc->components[0].lineStride;
-    register long incLine1 = FPXdesc->components[1].lineStride;
-    register long incLine2 = FPXdesc->components[2].lineStride;
-    register long incLine3 = FPXdesc->components[3].lineStride;
-    register long incCol0  = FPXdesc->components[0].columnStride;
-    register long incCol1  = FPXdesc->components[1].columnStride;
-    register long incCol2  = FPXdesc->components[2].columnStride;
-    register long incCol3  = FPXdesc->components[3].columnStride;
+    long incLine0 = FPXdesc->components[0].lineStride;
+    long incLine1 = FPXdesc->components[1].lineStride;
+    long incLine2 = FPXdesc->components[2].lineStride;
+    long incLine3 = FPXdesc->components[3].lineStride;
+    long incCol0  = FPXdesc->components[0].columnStride;
+    long incCol1  = FPXdesc->components[1].columnStride;
+    long incCol2  = FPXdesc->components[2].columnStride;
+    long incCol3  = FPXdesc->components[3].columnStride;
     
     unsigned char* pt0;
     unsigned char* pt1;
@@ -469,7 +469,7 @@ void FPXBufferDesc::UpdateBuffer ()
 
     unsigned char* pix;
     long  nbChan = FPXdesc->numberOfComponents;
-    register long  incCol;
+    long  incCol;
     
     if (nbChan == 1) {
       pix    = buffer + 3;
@@ -526,16 +526,16 @@ void FPXBufferDesc::UpdateDescriptor ()
   // If the pixels are stored in a local buffer, they have to be transfered to the
   // image descriptor
   if (localBuffer) {
-    register long i, j;
+    long i, j;
     
-    register long incLine0 = FPXdesc->components[0].lineStride;
-    register long incLine1 = FPXdesc->components[1].lineStride;
-    register long incLine2 = FPXdesc->components[2].lineStride;
-    register long incLine3 = FPXdesc->components[3].lineStride;
-    register long incCol0  = FPXdesc->components[0].columnStride;
-    register long incCol1  = FPXdesc->components[1].columnStride;
-    register long incCol2  = FPXdesc->components[2].columnStride;
-    register long incCol3  = FPXdesc->components[3].columnStride;
+    long incLine0 = FPXdesc->components[0].lineStride;
+    long incLine1 = FPXdesc->components[1].lineStride;
+    long incLine2 = FPXdesc->components[2].lineStride;
+    long incLine3 = FPXdesc->components[3].lineStride;
+    long incCol0  = FPXdesc->components[0].columnStride;
+    long incCol1  = FPXdesc->components[1].columnStride;
+    long incCol2  = FPXdesc->components[2].columnStride;
+    long incCol3  = FPXdesc->components[3].columnStride;
     
     unsigned char* pt0;
     unsigned char* pt1;
@@ -544,7 +544,7 @@ void FPXBufferDesc::UpdateDescriptor ()
 
     unsigned char* pix;
     long  nbChan = FPXdesc->numberOfComponents;
-    register long  incCol;
+    long  incCol;
     
     if (nbChan == 1) {
       pix    = buffer + 3;
@@ -915,7 +915,7 @@ Boolean IsASupportedDescriptor(FPXImageDesc& desc, long width)
 // Check to see if all pixels in a tile are same and return the pixel value
 Boolean IsTileAllSamePixel(Pixel *entireTile, short width, short height, Pixel* singleColorPixel)
 {
-  register unsigned long numofpixel = width * height;
+  unsigned long numofpixel = width * height;
   
   *singleColorPixel = entireTile[0];
   for ( unsigned long i = 1; i< numofpixel; i++ )
@@ -1545,7 +1545,7 @@ Boolean CreateThumbnail(unsigned char* buf, FPXBaselineColorSpace baseSpace,
 // Create window DIB default palette, which is grayscale ramp of 256 RGBQUAD
 void SetDefaultPalette(unsigned char *palBuffer)
 {
-  register unsigned long *all; 
+  unsigned long *all; 
   
   // Set the grayscale ramp of RGBQUADs
   all = (unsigned long *)(palBuffer); 

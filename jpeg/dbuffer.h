@@ -258,7 +258,7 @@ DECODER_STRUCT *decoder );
 /* Shift data, check Bound then write them to current output row */
 #define WRITE_ROW(buf,tmp,data0,data1,data2,data3,data4,data5,data6,data7)\
 if (db_state->db_ncomps > 1) {\
-    register int *p;\
+    int *p;\
     p = (int *)buf;\
     if (db_state->db_do_bound) {\
         SHIFT_AND_BOUND(tmp, data0, *p++);\
@@ -280,7 +280,7 @@ if (db_state->db_ncomps > 1) {\
         *p++ = data7 + 128;\
     }\
 } else {\
-    register int *p;\
+    int *p;\
     p = buf;\
     if (db_state->db_do_bound >= 8) {\
         SHIFT_AND_BOUND(tmp, data0, *p++);\
@@ -311,7 +311,7 @@ if (db_state->db_ncomps > 1) {\
 /* Shift data, check Bound then write them to current output row */
 #define WRITE_ROWS(buf,data)\
 if (db_state->db_ncomps > 1) {\
-    register int *p, i, val;\
+    int *p, i, val;\
     if (db_state->db_do_bound) {\
         SHIFT_AND_BOUND(val, data, val);\
     } else val = data + 128;\
@@ -327,8 +327,8 @@ if (db_state->db_ncomps > 1) {\
         *p++ = val;\
     }\
 } else {\
-    register unsigned char *p, val;\
-    register int i, j;\
+    unsigned char *p, val;\
+    int i, j;\
     SHIFT_AND_BOUND(i, data, val);\
     if (db_state->db_do_bound > 8) db_state->db_do_bound = 8;\
     for (i = 8; i > 0; i--) {\

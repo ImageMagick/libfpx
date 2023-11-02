@@ -286,8 +286,8 @@ FPXStatus PageImage::ReadPage (Pixel* image)
           break;
         }
         // Pixel by pixel if planes specified, the destination contains only the choosed channel
-        register long j;
-        register unsigned char *src, *dst;
+        long j;
+        unsigned char *src, *dst;
         src = (unsigned char *)(pt)  + plan;
         dst = dest; 
         for (j=0; j<pixWidth;j++,src+=sizeof(Pixel),dst++)
@@ -325,8 +325,8 @@ FPXStatus PageImage::ReadPageLine (long lineNumber, Pixel* pixLine)
     short plan = GtheSystemToolkit->activeChannel;
     if ((plan != ActiveChannel_All) && (GtheSystemToolkit->interleaving == Interleaving_Channel)) {
       // Pixel by pixel if planes specified, the destination contains only the choosen channel
-      register long j;
-      register unsigned char *src, *dst;
+      long j;
+      unsigned char *src, *dst;
       src = (unsigned char *)(pt)  + plan;
       dst = (unsigned char *)pixLine; 
       for (j=0; j<pixWidth;j++,src+=sizeof(Pixel),dst++)
@@ -338,8 +338,8 @@ FPXStatus PageImage::ReadPageLine (long lineNumber, Pixel* pixLine)
         BlockMove(pt,pixLine,pixWidth*sizeof(Pixel));
       } else {
         // Pixel by pixel if planes specified
-        register long j;
-        register unsigned char *src, *dst;
+        long j;
+        unsigned char *src, *dst;
         src = (unsigned char *)(pt)  + plan;
         dst = (unsigned char *)(pixLine) + plan; 
         for (j=0; j<pixWidth;j++,src+=sizeof(Pixel),dst+=sizeof(Pixel))

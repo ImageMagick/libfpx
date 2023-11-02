@@ -79,17 +79,17 @@ void IDct_Chen(DB_STATE *db_state,
 int *x)
 {
 #ifdef VECTOR_DEFINITION
-  register int a[4];
-  register int b[4];
-  register int c[4];
+  int a[4];
+  int b[4];
+  int c[4];
 #else  
-  register long int a0,a1,a2,a3;
-  register long int b0,b1,b2,b3;
-  register long int c0,c1,c2,c3;
-  register int nif_a0;  /* same as a0, but an s int...used in SHIFT_AND_BOUND() macro */
+  long int a0,a1,a2,a3;
+  long int b0,b1,b2,b3;
+  long int c0,c1,c2,c3;
+  int nif_a0;  /* same as a0, but an s int...used in SHIFT_AND_BOUND() macro */
 #endif
-  register int i;
-  register int *aptr;
+  int i;
+  int *aptr;
 
   for(aptr=x, i=0; i<8; i++, aptr++) {
     b0 = *aptr;

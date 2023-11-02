@@ -98,8 +98,8 @@
 static void ConvolStandard (Pixel* source, long width, long height, Pixel* dest, long pixelsPerLine)
 
 {
-  register Pixel *pt, *pSE, *pSW, *pNE, *pNW;
-  register long i, j, lineWidth;
+  Pixel *pt, *pSE, *pSW, *pNE, *pNW;
+  long i, j, lineWidth;
 
   // Compute loop control values
   long oddLine    = width & 0x01;
@@ -322,7 +322,7 @@ static void ConvolGaussian3 (Pixel* source, long width, long height,
     return;
   }
 
-  register Pixel *pt, *pSE, *pSW, *pNE, *pNW, *pC, *pS, *pN, *pE, *pW;
+  Pixel *pt, *pSE, *pSW, *pNE, *pNW, *pC, *pS, *pN, *pE, *pW;
   long i, j, lineWidth;
 
   // Compute loop control values
@@ -397,7 +397,7 @@ static void ConvolGaussSimplified (Pixel* source, long width, long height, Pixel
     return;
   }
 
-  register Pixel *pt, *pC, *pS, *pN, *pE, *pW;
+  Pixel *pt, *pC, *pS, *pN, *pE, *pW;
   long i, j, lineWidth;
 
   // Compute loop control values
@@ -552,8 +552,8 @@ void PTile::InitializeRead (PResolutionLevel* father, long offset, long sizetile
   previous      = NULL;
   next        = NULL;
   
-  register long TILE_WIDTH = fatherSubImage->fatherFile->tileWidth;
-  register long TILE_MASK  = fatherSubImage->fatherFile->maskTileWidth;
+  long TILE_WIDTH = fatherSubImage->fatherFile->tileWidth;
+  long TILE_MASK  = fatherSubImage->fatherFile->maskTileWidth;
 
   long curLine = id/fatherSubImage->nbTilesW;
   long curCol =  id%fatherSubImage->nbTilesW;
@@ -1018,8 +1018,8 @@ void PTile::Insert()
 //
 long PTile::Free (Boolean forced, Boolean freeIncomplete)
 {
-  register long TILE_WIDTH = fatherSubImage->fatherFile->tileWidth;
-  register long size = 0;
+  long TILE_WIDTH = fatherSubImage->fatherFile->tileWidth;
+  long size = 0;
 
 #ifdef Memoire_Debug
   VISU2 "Free the tile: %d:%d, forced = %d\n", fatherSubImage->identifier, identifier, forced FIN
@@ -1171,8 +1171,8 @@ TLC_IdCodec PTile::ConvertCompressionOption ()
 FPXStatus PTile::WriteRectangle (Pixel* pix, long width, long height, long rowOffset, 
         long x0, long y0, short plan)
 {
-  register Pixel* pt;
-  register long   i;
+  Pixel* pt;
+  long   i;
   FPXStatus   status = FPX_OK;
   
   // Read or allocate the tile if necessary
@@ -1191,8 +1191,8 @@ FPXStatus PTile::WriteRectangle (Pixel* pix, long width, long height, long rowOf
       BlockMove(pix,pt,width*sizeof(Pixel));
   } else {
     // Pixel by pixel if planes specified
-    register long j;
-    register unsigned char *src, *dst;
+    long j;
+    unsigned char *src, *dst;
     for (i = 0; i < height; i++, pt += this->width, pix += rowOffset) {
       src = (unsigned char *)(pix) + plan; 
       dst = (unsigned char *)(pt)  + plan;
@@ -1215,7 +1215,7 @@ FPXStatus PTile::WriteRectangle (Pixel* pix, long width, long height, long rowOf
   freshPixels += width*height;
   pixelsStale = true;
 
-  // If everything refreshed (so, we hope thatÐ)
+  // If everything refreshed (so, we hope that)
   if (freshPixels >= (this->width * this->height))
     status = WriteTile();
 
@@ -1302,7 +1302,7 @@ FPXStatus PTile::Convolution (Pixel* pix, long srcWidth, long srcHeight, long qu
   // Update amount of fresh pixels
   freshPixels += writtenWidth * writtenHeight;
   
-  // If everything refreshed (so, we hope thatÐ)
+  // If everything refreshed (so, we hope that)
   if (freshPixels >= (width * height))
     status = WriteTile();                   // Write tile on disk 
   
@@ -1384,8 +1384,8 @@ FPXStatus PTile::ReadRectangleRawData (Pixel* pix, long width, long height, long
 FPXStatus PTile::ReadRectangle (Pixel* pix, long width, long height, long rowOffset, 
           long x0, long y0)
 {
-  register  Pixel *pt;
-  register  long  i;
+  Pixel *pt;
+  long  i;
   FPXStatus     status;
   
   // Read the tile if necessary
@@ -1404,8 +1404,8 @@ FPXStatus PTile::ReadRectangle (Pixel* pix, long width, long height, long rowOff
       BlockMove(pt,pix,width*sizeof(Pixel));
   } else {
     // Pixel by pixel if planes specified
-    register long j;
-    register unsigned char *src, *dst;
+    long j;
+    unsigned char *src, *dst;
     for (i = 0; i < height; i++, pt += this->width, pix += rowOffset) {
       src = (unsigned char *)(pt)  + plan;
       dst = (unsigned char *)(pix) + plan; 

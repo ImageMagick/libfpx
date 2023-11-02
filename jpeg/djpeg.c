@@ -51,7 +51,7 @@ unsigned char *data,
 int nrows,
 int nbytes_per_row)
 {
-  register int i,j;
+  int i,j;
   unsigned char *in_ptr,*out_ptr;
 
   in_ptr=data; 

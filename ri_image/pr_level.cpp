@@ -76,8 +76,8 @@
   posFic      = 0;            // Position at the begining os the file
   identifier  = *whatImage;
   
-  register int TILE_WIDTH = fatherFile->tileWidth;
-  register int TILE_SHIFT = fatherFile->log2TileWidth;
+  int TILE_WIDTH = fatherFile->tileWidth;
+  int TILE_SHIFT = fatherFile->log2TileWidth;
 
   // Compute number of tiles in height and width
   nbTilesH    = (short)((height + TILE_WIDTH - 1) >> TILE_SHIFT);
@@ -165,9 +165,9 @@ PResolutionLevel* PResolutionLevel::Previous()
 // Allocate resolution levels array and compute resolution information
 FPXStatus PResolutionLevel::Allocation ()
 {
-  register int TILE_WIDTH = fatherFile->tileWidth;
-  register int TILE_SHIFT = fatherFile->log2TileWidth;
-  register int TILE_MASK  = fatherFile->maskTileWidth;
+  int TILE_WIDTH = fatherFile->tileWidth;
+  int TILE_SHIFT = fatherFile->log2TileWidth;
+  int TILE_MASK  = fatherFile->maskTileWidth;
 
   short   i;
   short   j;
@@ -243,8 +243,8 @@ FPXStatus PResolutionLevel::InverseAlpha()
   if (!HasBeenUsed())
     return FPX_OK;
     
-  register int i = nbTilesH * nbTilesW;
-  register PTile* tile = tiles;
+  int i = nbTilesH * nbTilesW;
+  PTile* tile = tiles;
   
   while (i--)
     tile++->InverseAlpha();
@@ -303,9 +303,9 @@ FPXStatus PResolutionLevel::WriteRectangle (int x0, int y0, int x1, int y1, Pixe
   int    h, w;
   int    rowOffset = x1 - x0 + 1;
     
-  register int TILE_WIDTH  = fatherFile->tileWidth;
-  register int TILE_SHIFT  = fatherFile->log2TileWidth;
-  register int TILE_MASK   = fatherFile->maskTileWidth;
+  int TILE_WIDTH  = fatherFile->tileWidth;
+  int TILE_SHIFT  = fatherFile->log2TileWidth;
+  int TILE_MASK   = fatherFile->maskTileWidth;
 
   // Test input values
   if ((x1 < x0) || (y1 < y0))
@@ -417,9 +417,9 @@ FPXStatus PResolutionLevel::ReadRectangle (int x0, int y0, int x1, int y1, Pixel
   int    h, w;
   int    rowOffset = x1 - x0 + 1;
 
-  register int TILE_WIDTH  = fatherFile->tileWidth;
-  register int TILE_SHIFT  = fatherFile->log2TileWidth;
-  register int TILE_MASK   = fatherFile->maskTileWidth;
+  int TILE_WIDTH  = fatherFile->tileWidth;
+  int TILE_SHIFT  = fatherFile->log2TileWidth;
+  int TILE_MASK   = fatherFile->maskTileWidth;
        Pixel BACKGROUND   = fatherFile->backgroundUsed;
 
   // Test input values
@@ -526,9 +526,9 @@ FPXStatus PResolutionLevel::Convolution (int x, int y, Pixel* pix, int width, in
 //
 FPXStatus PResolutionLevel::Read(int* px, int* py, Pixel* table)
 {
-  register int TILE_WIDTH  = fatherFile->tileWidth;
-  register int TILE_SHIFT  = fatherFile->log2TileWidth;
-  register int TILE_MASK   = fatherFile->maskTileWidth;
+  int TILE_WIDTH  = fatherFile->tileWidth;
+  int TILE_SHIFT  = fatherFile->log2TileWidth;
+  int TILE_MASK   = fatherFile->maskTileWidth;
        Pixel BACKGROUND = fatherFile->backgroundUsed;
        Boolean useAlpha = fatherFile->useAlphaChannel | (isAlpha & premultiplied);
   unsigned char alphaOffset = fatherFile->alphaOffset;
@@ -731,8 +731,8 @@ FPXStatus PResolutionLevel::Read(int* px, int* py, Pixel* table)
 //  ----------------------------------------------------------------------------
 FPXStatus PResolutionLevel::ReadInterpolated (int* px, int* py, Pixel* table)
 {
-  register int TILE_SHIFT  = fatherFile->log2TileWidth;
-  register int TILE_MASK   = fatherFile->maskTileWidth;
+  int TILE_SHIFT  = fatherFile->log2TileWidth;
+  int TILE_MASK   = fatherFile->maskTileWidth;
        Pixel  BACKGROUND = fatherFile->backgroundUsed;
 
   PTile     * tile;
@@ -902,8 +902,8 @@ FPXStatus PResolutionLevel::ReadMeanInterpolated (int xi, int yi, Pixel& pixel)
   Boolean     useAlpha = fatherFile->useAlphaChannel | (isAlpha & premultiplied);
   FPXStatus   status = FPX_OK;
   
-  register int  TILE_SHIFT = fatherFile->log2TileWidth;
-  register int  TILE_MASK  = fatherFile->maskTileWidth;
+  int  TILE_SHIFT = fatherFile->log2TileWidth;
+  int  TILE_MASK  = fatherFile->maskTileWidth;
        Pixel BACKGROUND = fatherFile->backgroundUsed;
   unsigned char alphaOffset = fatherFile->alphaOffset;
 
@@ -1173,8 +1173,8 @@ FPXStatus PResolutionLevel::ReadMean (int xi, int yi, Pixel& pixel)
   Boolean     useAlpha      = fatherFile->useAlphaChannel | (isAlpha & premultiplied);
   unsigned char   alphaOffset     = fatherFile->alphaOffset;
   
-  register int  TILE_SHIFT = fatherFile->log2TileWidth;
-  register int  TILE_MASK  = fatherFile->maskTileWidth;
+  int  TILE_SHIFT = fatherFile->log2TileWidth;
+  int  TILE_MASK  = fatherFile->maskTileWidth;
        Pixel BACKGROUND = fatherFile->backgroundUsed;
 
   // Compute cropping for this scale :
@@ -1227,8 +1227,8 @@ FPXStatus PResolutionLevel::ReadSampledRectangle(int x0, int y0,int x1, int y1, 
   int  i, j, k;
   Pixel*  bufferPtr = map;
 
-  register int  TILE_WIDTH = fatherFile->tileWidth;
-  register int  TILE_SHIFT = fatherFile->log2TileWidth;
+  int  TILE_WIDTH = fatherFile->tileWidth;
+  int  TILE_SHIFT = fatherFile->log2TileWidth;
        Pixel BACKGROUND = fatherFile->backgroundUsed;
   unsigned char alphaOffset = fatherFile->alphaOffset;
   BACKGROUND.rouge  = 0xFF;
@@ -1395,8 +1395,8 @@ FPXStatus PResolutionLevel::ReadSampledRectangle(int x0, int y0,int x1, int y1, 
 // This function is used when 1 image pixel is represented by more than 1 screen pixel
 FPXStatus PResolutionLevel::SearchPixelTopLeftCorner(int* x1, int* y1, float ratio)
 {
-  register int  TILE_WIDTH = fatherFile->tileWidth;
-  register int  TILE_SHIFT = fatherFile->log2TileWidth;
+  int  TILE_WIDTH = fatherFile->tileWidth;
+  int  TILE_SHIFT = fatherFile->log2TileWidth;
       
   short   *pixToTile;
   FPXStatus status;
@@ -1469,7 +1469,7 @@ FPXStatus PResolutionLevel::ReadInARectangle(Pixel* bufferOut, short pixelsPerLi
   float   ratio;
   FPXStatus   status = FPX_OK;
 
-  register int  TILE_WIDTH = fatherFile->tileWidth;
+  int  TILE_WIDTH = fatherFile->tileWidth;
        Pixel BACKGROUND = fatherFile->backgroundUsed;
   unsigned char alphaOffset = fatherFile->alphaOffset;
   BACKGROUND.rouge  = 0xFF;

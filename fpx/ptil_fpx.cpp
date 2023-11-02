@@ -286,7 +286,7 @@ FPXStatus PTileFlashPix::WriteRawTile (FPXCompressionOption   compressOption,
 //
 FPXStatus PTileFlashPix::Write()
 {
-  register long   TILE_WIDTH = fatherSubImage->fatherFile->tileWidth;
+  long   TILE_WIDTH = fatherSubImage->fatherFile->tileWidth;
   long      sizeCompressed;       // Size of data after compression
 
   ptr_Compresseur monCompresseur; 
@@ -728,7 +728,7 @@ FPXStatus PTileFlashPix::ReadRawPixels()
   ptr_Compresseur monDecompresseur; 
   PFlashPixFile *fileFPX;
   Pixel       *entireTile;
-  register long   TILE_WIDTH = fatherSubImage->fatherFile->tileWidth;
+  long   TILE_WIDTH = fatherSubImage->fatherFile->tileWidth;
   Boolean     wasLocked = false;
   FPXStatus   status = FPX_OK;
   OLEHeaderStream *subStreamData = NULL;
@@ -863,8 +863,8 @@ FPXStatus PTileFlashPix::ReadRawPixels()
         LockDecompress ();          // Flag decompress buffer in use
         AllocDecompress(tileSize);      // Allocate a buffer for compressed data
         
-        if (!decompressBuffer)        // If no buffer allocatedÎ
-          decompressorIsMissing = true; // Îdecompression failed
+        if (!decompressBuffer)        // If no buffer allocated
+          decompressorIsMissing = true; // decompression failed
         else {
           // Read pixels data (at last...)
           if (subStreamData->Seek( posPixelFic) == false) {
@@ -965,8 +965,8 @@ FPXStatus PTileFlashPix::ReadRawPixels()
         LockDecompress ();          // Flag decompress buffer in use
         AllocDecompress(tileSize);      // Allocate a buffer for compressed data
 
-        if (!decompressBuffer)        // If no buffer allocatedÎ
-          decompressorIsMissing = true; // Îdecompression failed
+        if (!decompressBuffer)        // If no buffer allocated
+          decompressorIsMissing = true; // decompression failed
         else {
           // Read pixels data (at last...)
           if (subStreamData->Seek(posPixelFic) == false) {

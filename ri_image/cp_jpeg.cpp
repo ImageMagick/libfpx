@@ -268,8 +268,8 @@ int PCompressorJPEG::Compress(unsigned char * uncompressedData,
                     long* sizeCompressed)
 {
   int status = FPX_OK;      // CHG_FILE_ERR - init to no error
-  register long   numberofpixel = width * height;
-  register long   buflen = numberofpixel * bytesPerPixel;
+  long   numberofpixel = width * height;
+  long   buflen = numberofpixel * bytesPerPixel;
 
   // Verify the parameters
   assert(uncompressedData != NULL);
@@ -302,8 +302,8 @@ int PCompressorJPEG::Decompress(unsigned char* uncompressedData,
                     long sizeCompressed)
 {
   int       status = FPX_OK;      // CHG_FILE_ERR - init to no error
-  register long   numberofpixel = width * height;
-  register long   buflen = numberofpixel * bytesPerPixel;
+  long   numberofpixel = width * height;
+  long   buflen = numberofpixel * bytesPerPixel;
 
   // Verify the parameters
   assert(uncompressedData != NULL);
@@ -421,7 +421,7 @@ Boolean PCompressorSinColor::Decompress(unsigned char* uncompressedData,
                       unsigned char* compressedData, 
                       long sizeCompressed)
 {
-  register long   numberofpixel = width * height;
+  long   numberofpixel = width * height;
   unsigned char alphaValue = 0; 
   
   if ( sizeCompressed == 4 ) {
@@ -430,7 +430,7 @@ Boolean PCompressorSinColor::Decompress(unsigned char* uncompressedData,
   }
   
   // Rebuild the pixel buffer
-  for ( register long i= 0; i< numberofpixel; i++ )
+  for ( long i= 0; i< numberofpixel; i++ )
   {
     uncompressedData[4*i] = alphaValue; 
     uncompressedData[4*i + 1] = compressedData[0]; 

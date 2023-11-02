@@ -422,8 +422,8 @@ const unsigned char g_TypeSizesB[] =
 STDAPI PropVariantCopy ( PROPVARIANT * pDest, const PROPVARIANT * pvarg )
 {
     HRESULT     hr = S_OK;
-    register unsigned char TypeInfo;
-    register int iBaseType;
+    unsigned char TypeInfo;
+    int iBaseType;
 
     // handle the simple types quickly
     iBaseType = pvarg->vt & ~VT_VECTOR;

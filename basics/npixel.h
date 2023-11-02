@@ -104,7 +104,7 @@
 
   inline  NPixel::NPixel(const Pixel& pix)
   { 
-    register unsigned32 newColor = *((unsigned32 *)(&pix));
+    unsigned32 newColor = *((unsigned32 *)(&pix));
 #ifdef __bigEndian
     itsColor = newColor;                    // Simple copy
 #else

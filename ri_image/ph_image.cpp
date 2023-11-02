@@ -197,8 +197,8 @@ void PHierarchicalImage::Init ()
   automaticDecimation = true;       // Default is: yes, do decimation automatically
 
   compression   = Toolkit_Compression();  // Default compression mode
-  compressionHandle = NULL;       // Start with no compression handleÐ
-  handleSize    = 0;        // Ðwhich size is then null
+  compressionHandle = NULL;       // Start with no compression handle
+  handleSize    = 0;        // which size is then null
 
   SetTileParameter (Toolkit_TileWidth(), Toolkit_TileWidth()); // Default tile size
 
@@ -208,8 +208,8 @@ void PHierarchicalImage::Init ()
 
   //  fileName  = "";       // Name of the image file
 
-  filePtr   = NULL;       // File not opened yetÐ
-  fd      = 0;        // Ðor may be by the caller.
+  filePtr   = NULL;       // File not opened yet
+  fd      = 0;        // or may be by the caller.
   mode      = mode_Lecture;     // Opening mode: read only by default
   posFic    = 0;        // Position at the begining os the file
   version   = 0;        // Version of the file (we've no idea at that level...)
@@ -335,8 +335,8 @@ FPXStatus PHierarchicalImage::WriteLine (Pixel* pix, short plan)
     } else {
       // The buffer contain only the active channel
       // we must create a temporary buffer to send to the image file
-      register int j;
-      register unsigned char *src, *dst;
+      int j;
+      unsigned char *src, *dst;
 
       src = (unsigned char *)(pix);
       dst = (unsigned char *)(source)  + plan;
@@ -366,8 +366,8 @@ FPXStatus PHierarchicalImage::WriteRectangle (int x0, int y0, int x1, int y1, Pi
     int subX0, subY0, subX1, subY1;  // corners of the temporary buffer
     int bufSize = 0;         // size of temporary buffer
     int bufWidth, bufHeight;     // width ans height of temporary buffer
-    register int i, j;
-    register unsigned char *src, *dst, *ptrPix;
+    int i, j;
+    unsigned char *src, *dst, *ptrPix;
 
     src = dst = ptrPix = 0;
     // cut the rectangle in sub-rectangles to avoid to create a big buffer
@@ -488,8 +488,8 @@ FPXStatus PHierarchicalImage::ReadRectangle (int x0, int y0, int x1, int y1, Pix
     int subX0, subY0, subX1, subY1;  // corners of the temporary buffer
     int bufSize = 0;         // size of temporary buffer
     int bufWidth, bufHeight;     // width ans height of temporary buffer
-    register int i, j;
-    register unsigned char *src, *dst, *ptrPix;
+    int i, j;
+    unsigned char *src, *dst, *ptrPix;
 
     short plan = Toolkit_ActiveChannel();
     int incrRow = tileWidth;
@@ -716,7 +716,7 @@ FPXStatus PHierarchicalImage::ReadInARectangle (Pixel* bufferOut, short pixelsPe
                   const CorrectLut* correctLut, Boolean useAlphaChannel, const CombinMat* combinaisonMatrix)
 {
   Pixel *bufferTemp, *ptrBufferTemp, *ptrBufferOut;
-  register int i;
+  int i;
 
   // allocate an intermediate buffer to read the rectangle
   unsigned int size = (unsigned int)(pixelsPerLine * rectHeight);
@@ -747,8 +747,8 @@ FPXStatus PHierarchicalImage::ReadInARectangle (Pixel* bufferOut, short pixelsPe
   short plan = Toolkit_ActiveChannel();
   if ((plan != ActiveChannel_All) && (GtheSystemToolkit->interleaving == Interleaving_Channel)) {
     // Copy Pixel by pixel if planes specified, the destination contains only the choosen channel
-    register int j;
-    register unsigned char *src, *dst, *ptrCharBufferOut;
+    int j;
+    unsigned char *src, *dst, *ptrCharBufferOut;
     ptrCharBufferOut = (unsigned char *)(bufferOut);
     for (i = 0; i < rectHeight; i++, bufferTemp += pixelsPerLine, ptrCharBufferOut += pixelsPerLine ) {
       src = (unsigned char *)(bufferTemp)  + plan;
@@ -1116,7 +1116,7 @@ FPXStatus PHierarchicalImage::GetHistogram (int* alpha, int* red, int* green, in
   FPXStatus status = FPX_OK;
 
   if (Status() == 0 && nbSubImages)
-    // Compute only on the last sub-imageÐ
+    // Compute only on the last sub-image
     status = subImages[nbSubImages-1]->GetHistogram (alpha, red, green, blue, brightness, correctLut);
   else
     status = FPX_ERROR;

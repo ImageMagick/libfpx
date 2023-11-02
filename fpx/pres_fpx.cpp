@@ -753,7 +753,7 @@ FPXStatus PResolutionFlashPix::Read ()
 // Write the tile header of a sub-image :
 FPXStatus PResolutionFlashPix::Write()
 {
-  register int   TILE_WIDTH = fatherFile->tileWidth;
+  int   TILE_WIDTH = fatherFile->tileWidth;
   FPXStatus   status = FPX_OK;
 
   // If nothing has never been writen or read from this resolution level,

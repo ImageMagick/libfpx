@@ -72,8 +72,8 @@ Pixel CombinMat::operator()(const Pixel& pixIn) const
   {
     Pixel  pixOut;
   
-    register unsigned char r, v, b;
-    register long val;
+    unsigned char r, v, b;
+    long val;
 
     r = pixIn.rouge;
     v = pixIn.vert;
@@ -104,8 +104,8 @@ NPixel CombinMat::operator()(const NPixel& pixIn) const
   {
     NPixel  pixOut;
   
-    register unsigned char r, v, b;
-    register long val;
+    unsigned char r, v, b;
+    long val;
 
     r = pixIn.Red();
     v = pixIn.Green();

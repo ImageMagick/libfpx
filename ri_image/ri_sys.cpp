@@ -186,7 +186,7 @@ void PErrorsList::AddErrorToList(OSErr err, FicNom file)
 
 PSystemToolkit::PSystemToolkit ()
 {
-  register int i, n;
+  int i, n;
   
   tousLesCodecs     = new obj_TousLesCodecs;  // Allocate standard compressors
 
@@ -299,7 +299,7 @@ long PSystemToolkit::PurgeSystemWithAmount (long memoryToBePurged)
 
 long PSystemToolkit::SetTileSize(long newTileSize)
 {
-  register long status = 0;
+  long status = 0;
   
   if (newTileSize < MIN_TILE_SIZE)
     status = 1;
@@ -320,7 +320,7 @@ long PSystemToolkit::SetTileSize(long newTileSize)
 
 long PSystemToolkit::SetWaitFunc (Typ_WaitFunc newWaitFunc)
 {
-  register long status = 0;
+  long status = 0;
 
   if (newWaitFunc == NULL)
     status = -1;
@@ -333,7 +333,7 @@ long PSystemToolkit::SetWaitFunc (Typ_WaitFunc newWaitFunc)
 
 long PSystemToolkit::SetProgFunc (FPXProgressFunction newProgFunc)
 {
-  register long status = 0;
+  long status = 0;
 
   if (newProgFunc == NULL)
     status = -1;
@@ -371,7 +371,7 @@ long PSystemToolkit::GetUnit (Typ_Unit* newUnit)
 
 long PSystemToolkit::SetConvolution (Typ_Convolution newConvolution, Typ_Filter newFilter)
 {
-  register long status = 0;
+  long status = 0;
   
   if (newConvolution == Convolution_Other) {
     if (newFilter == NULL)
@@ -390,7 +390,7 @@ long PSystemToolkit::SetConvolution (Typ_Convolution newConvolution, Typ_Filter 
 
 long PSystemToolkit::SetConvolution (Typ_Convolution newConvolution)
 {
-  register long status = 0;
+  long status = 0;
   
   if (newConvolution == Convolution_Other)
     status = 1;
@@ -441,7 +441,7 @@ void PSystemToolkit::SetUsedColorSpace (FPXBaselineColorSpace colorSpace)
 
 void PSystemToolkit::SetToBackground(ptr_Pixel buffer, long width, long height)
 {
-  register long i = width * height;
+  long i = width * height;
   
   // Set a pixel buffer to background color
   while (i--)
@@ -452,7 +452,7 @@ void PSystemToolkit::SetToBackground(ptr_Pixel buffer, long width, long height)
 long PSystemToolkit::SetColorConversion (Typ_ColorCode colorCode,   Typ_ModeltoRGB modeltoRGB, 
                                 Typ_RGBtoModel RGBtoModel)
 {
-  register long status = 0;
+  long status = 0;
   
   if (colorCode == ColorCode_RGB)
     status = 1;
@@ -469,7 +469,7 @@ long PSystemToolkit::SetColorConversion (Typ_ColorCode colorCode,   Typ_ModeltoR
 
 long PSystemToolkit::SetCompression (Typ_Compression newidCompressor, Typ_Compressor newCompressor, Typ_Decompressor newDecompressor)
 {
-  register long status = 0;
+  long status = 0;
   
   if (newidCompressor == Compression_Other) {
     if ((newCompressor == NULL) || (newDecompressor == NULL))
@@ -489,7 +489,7 @@ long PSystemToolkit::SetCompression (Typ_Compression newidCompressor, Typ_Compre
 
 long PSystemToolkit::SetCompressionHandle(void* newCompressionHandle, long newHandleSize)
 {
-  register long status = 0;
+  long status = 0;
   
   if (newCompressionHandle == NULL)
     status = -1;
@@ -595,7 +595,7 @@ Boolean Toolkit_Interleave (Pixel* source, long width, long height)
   unsigned int size;
   long incline, incchannel;
   
-  if (GtheSystemToolkit->interleaving == Interleaving_Pixel)    // Nothing to doÐ
+  if (GtheSystemToolkit->interleaving == Interleaving_Pixel)    // Nothing to do
       return false;
 
   // allocate an intermediate buffer
@@ -657,7 +657,7 @@ Boolean Toolkit_UnInterleave (Pixel* source, Pixel* dest, long sourceWidth, long
   long incline, incchannel;
   long i, j;
   
-  if (GtheSystemToolkit->interleaving == Interleaving_Pixel) {    // Nothing to doÐ
+  if (GtheSystemToolkit->interleaving == Interleaving_Pixel) {    // Nothing to do
     // recopy buffer after interleaving
     for (i = 0; i <destHeight; i++, dest += destWidth, source += sourceWidth)
       memcpy (dest, source, destWidth*sizeof(Pixel));
@@ -742,7 +742,7 @@ Boolean Toolkit_CopyInterleaved (Pixel* image,     long imageWidth, long imageHe
         }
       } else {
         for (i = 0; i < rectHeight; i++) {
-          register unsigned char *src, *dst;
+          unsigned char *src, *dst;
           src = (unsigned char *)(rectangle)  + plan;
           dst = (unsigned char *)(image) + plan; 
           for (j = 0; j < cropWidth; j++, src += sizeof(Pixel), dst += sizeof(Pixel))

@@ -284,7 +284,7 @@ void PColorTwist::UsePortfolioLut(void)
 
 void PColorTwist::ApplyToBuffer(unsigned char* buffer, long size)
 {
-  register int c1, c2, c3;
+  int c1, c2, c3;
   float alpha_scale;
   unsigned char *red_pixel,*green_pixel,*blue_pixel;
   unsigned char *alpha_pixel;
@@ -373,8 +373,8 @@ void PColorTwist::ApplyToBuffer(unsigned char* buffer, long size)
 // This routine assumes that T44 is equal to 1 and that a pixel is 4 bytes wide.
 void PColorTwist::ApplyRGBtoYCCLut(unsigned char* buffer, long size)
 {
-  register int  c1, c2, c3;
-  register int  rInt, gInt, bInt;     // PTCH_LUTCLIP - allow values > 255 from LUT
+  int  c1, c2, c3;
+  int  rInt, gInt, bInt;     // PTCH_LUTCLIP - allow values > 255 from LUT
   float       alpha_scale;
   unsigned char   *red_pixel, *green_pixel, *blue_pixel;
   unsigned char   *alpha_pixel;
@@ -418,7 +418,7 @@ void PColorTwist::ApplyRGBtoYCCLut(unsigned char* buffer, long size)
 /**
 Boolean PColorTwist::ApplyToPixelBuffer(Pixel* pixels, FPXBaselineColorSpace colorSpace, long size)
 {
-  register int c1, c2, c3;
+  int c1, c2, c3;
   unsigned char *red_pixel,*green_pixel,*blue_pixel;
 
   switch (colorSpace) {
@@ -475,7 +475,7 @@ Boolean PColorTwist::ApplyToPixelBuffer(Pixel* pixels, FPXBaselineColorSpace col
 **/
 Boolean PColorTwist::ApplyToPixelBuffer(Pixel* pixels, FPXBaselineColorSpace colorSpace, long size)
 {
-  register int c1, c2, c3;
+  int c1, c2, c3;
   unsigned char *red_pixel,*green_pixel,*blue_pixel;
   unsigned char *alpha_pixel;
   unsigned char clampLimit;

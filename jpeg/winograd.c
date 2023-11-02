@@ -112,7 +112,7 @@ EFUNC*/
 
 void IDct_Winograd( DB_STATE *db_state, int *x)
 {
-  register int *lptr, r0,r1,r2,r3,r4,r5,r6,r7, tmp, i;
+  int *lptr, r0,r1,r2,r3,r4,r5,r6,r7, tmp, i;
 
   /** Do columns **/
   for(lptr=x, i = 8; i > 0; i--, lptr++) {
@@ -292,7 +292,7 @@ EFUNC*/
 
 void IDct_Pruned_Winograd( DB_STATE *db_state, int *x)
 {
-  register int *lptr, r0,r1,r2,r3,r4,r5,r6,r7, tmp, i;
+  int *lptr, r0,r1,r2,r3,r4,r5,r6,r7, tmp, i;
 
   /** Do columns **/
   for(lptr=x, i = 4; i > 0; i--, lptr++) {
@@ -370,7 +370,7 @@ void IDct_Pruned_Winograd( DB_STATE *db_state, int *x)
 /*** DC-component only  ***/
 void IDct_DC_Winograd( DB_STATE *db_state, int *x )
 {
-  register int i,tmp;
+  int i,tmp;
 
   for (i=64; i > 0 ;i--)
     SHIFT_AND_BOUND(tmp,SCALEE(*x),*db_state->db_MCUptr++);

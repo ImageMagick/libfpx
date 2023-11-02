@@ -168,8 +168,8 @@ Decode_AC_Winograd(
   int *quant_vec,
   int *out)
 {
-    register int *index;
-    register int r, s, n;
+    int *index;
+    int r, s, n;
     
     bzero(out + 1, sizeof(int)*63);
     index = izigzag_index;
@@ -222,8 +222,8 @@ Decode_AC_Pruned_Winograd(
   int *quant_vec,
   int *out)
 {
-    register int *index;
-    register int r, s, n;
+    int *index;
+    int r, s, n;
     
     index = izigzag_index;
     /* Quantize DC coeff */
@@ -469,7 +469,7 @@ int Decode_Scan(
   int method,      /* 0 = Chen, 1 = Winograd, 2 = Pruned Winograd */
   int interleave)
 {
-   register long nMCU;
+  long nMCU;
   int *dp_last_dc;
 
   if ((dp_last_dc =(int *) FPX_malloc( 4 * sizeof(int)))==NULL) {

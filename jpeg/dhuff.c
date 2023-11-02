@@ -170,8 +170,8 @@ int Decode_Huffman(
 DB_STATE *db_state,
 DHUFF_TABLE *huff_table)
 {
-    register HUFFMAN_ELEM  *huff_elem;
-    register int n, code, *p;
+    HUFFMAN_ELEM  *huff_elem;
+    int n, code, *p;
     HUFFMAN_TREE  *huff_tree;
     
     huff_elem = huff_table->huffelem + DB_Get_Byte(db_state);
