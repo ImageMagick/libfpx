@@ -1,0 +1,14 @@
+.deps
+.libs
+autom4te.cache
+
+Makefile
+fpxlib-config.h
+libtool
+stamp-h1
+
+config.*
+*.o
+*.lo
+*.la
+*~
