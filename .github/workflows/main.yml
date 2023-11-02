@@ -1,0 +1,37 @@
+on:
+  push:
+    branches:
+    - main
+  pull_request:
+    branches:
+    - main
+
+name: main
+jobs:
+  build_linux:
+    name: Build Linux
+    container:
+      image: ubuntu:20.04
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Install dependencies
+      run: |
+        set -e
+        export DEBIAN_FRONTEND=noninteractive
+        apt-get update && \
+        apt-get install -y autoconf gcc g++ git libtool locales make pkg-config
+
+    - name: Configure Libfpx
+      run: |
+        autoreconf -fiv
+        ./configure
+
+    - name: Build Libfpx
+      run: |
+        set -e
+        make
+        make check
+        make install
