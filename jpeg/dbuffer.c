@@ -27,6 +27,7 @@
 #include "djpeg.h"
 #include "dparser.h"
 #include "fpxmem.h"
+#include <attributes.h>
 
 #ifdef USE_ALL_TABLES
 #define USE_SMALL_TABLES
@@ -136,11 +137,12 @@ void DB_Init (DB_STATE *db_state,
               unsigned char *data_in,
               size_t data_in_size,
               unsigned char *data_out,
-              int interleave,
+              int UNUSED_PARM(interleave),
               int which   /* 1: set read_bytes */
               /* 0,2: set read_bytes, write_rows & data */
 )
 {
+  UNREFERENCED_PARM(interleave);
   if (which == 1) {
     proc_read_bytes = read_bytes;
     db_state->db_inptr = db_state->db_inbuf = data_in;
@@ -641,15 +643,16 @@ DB_STATE *db_state)
  */
 int DB_Write_Begin(
                    DB_STATE *db_state,
-                   int ncomps,         /* number of image components (must be 1,2,3 or 4) */
-                   int horMCU,         /* total number of MCU in hor. direction */
-                   int width,          /* image width */
-                   int height,         /* image height */
-                   int *hsampling,     /* # hor. data units in 1 MCU of each component */
-                   int *vsampling,     /* # ver. data units in 1 MCU of each component */
+                   int ncomps,              /* number of image components (must be 1,2,3 or 4) */
+                   int UNUSED_PARM(horMCU), /* total number of MCU in hor. direction */
+                   int width,               /* image width */
+                   int height,              /* image height */
+                   int *hsampling,          /* # hor. data units in 1 MCU of each component */
+                   int *vsampling,          /* # ver. data units in 1 MCU of each component */
                    DECODER_STRUCT *decoder
 )
 {
+  UNREFERENCED_PARM(horMCU);
   int i;
 
   if ((ncomps != 1) && (ncomps != 2) && 

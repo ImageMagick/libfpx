@@ -25,6 +25,9 @@ jobs:
         apt-get install -y autoconf gcc g++ git libtool locales make pkg-config
 
     - name: Configure Libfpx
+      env:
+        CFLAGS: '-Wall -Wextra -Werror -Wno-error=deprecated-copy -Wno-error=class-memaccess'
+        CXXFLAGS: '-Wall -Wextra -Werror -Wno-error=deprecated-copy -Wno-error=class-memaccess'
       run: |
         autoreconf -fiv
         ./configure

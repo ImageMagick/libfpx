@@ -50,7 +50,7 @@
 #endif
 
 #include  "debug.h"
-
+#include  <attributes.h>
 
 //  Constants
 //  ---------
@@ -149,9 +149,10 @@ void Fichier::CloseFileWhenDelete()
 }
 
 // Open a file. If file is open to write into, try multiple times on Macintosh.
-void Fichier::Ouverture(const FicNom& fNom, mode_Ouverture mode, OSType fileSignature)
+void Fichier::Ouverture(const FicNom& fNom, mode_Ouverture mode, OSType UNUSED_PARM(fileSignature))
 
 {
+  UNREFERENCED_PARM(fileSignature);
 
 #ifdef macintosh
   OSErr   err       = noErr;

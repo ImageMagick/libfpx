@@ -602,8 +602,11 @@ Boolean PFileFlashPixView::Commit()
 
 #define USERCLASSTYPE_APPNAME 0
 
-HRESULT OleRegGetUserType(REFCLSID clsid, DWORD whatever, LPOLESTR FAR* pszUserType)
+HRESULT OleRegGetUserType(REFCLSID UNUSED_PARM(clsid), DWORD UNUSED_PARM(whatever), LPOLESTR FAR* pszUserType)
 {
+  UNIMPLEMENTED_PARM(clsid);
+  UNIMPLEMENTED_PARM(whatever);
+
     if (*pszUserType == NULL) {
         *pszUserType = new OLECHAR[512];
     }

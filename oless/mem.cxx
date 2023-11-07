@@ -268,7 +268,7 @@ STDMETHODIMP_(void) CAllocator::Free(void *pv)
 //              (now) 0
 //----------------------------------------------------------------------------
 
-STDMETHODIMP_(ULONG) CAllocator::GetSize(void * pv)
+STDMETHODIMP_(ULONG) CAllocator::GetSize(void * UNUSED_PARM(pv))
 {
     UNREFERENCED_PARM(pv);
     return 0;
@@ -288,7 +288,7 @@ STDMETHODIMP_(ULONG) CAllocator::GetSize(void * pv)
 //
 //----------------------------------------------------------------------------
 
-STDMETHODIMP_(int) CAllocator::DidAlloc(void FAR * pv)
+STDMETHODIMP_(int) CAllocator::DidAlloc(void FAR * UNUSED_PARM(pv))
 {
     UNREFERENCED_PARM(pv);
     return -1;

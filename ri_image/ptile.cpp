@@ -57,7 +57,7 @@
   #include "pres_fpx.h"
 #endif  
 
-
+#include <attributes.h>
 
 //  Constants
 //  ---------
@@ -1368,9 +1368,15 @@ FPXStatus PTile::DecimateTile()
 //
 //  SHOULD THIS HAVE A COLORSPACE ARG???
 //
-FPXStatus PTile::ReadRectangleRawData (Pixel* pix, long width, long height, long rowOffset, 
-          long x0, long y0)
+FPXStatus PTile::ReadRectangleRawData (Pixel* UNUSED_PARM(pix), long UNUSED_PARM(width), long UNUSED_PARM(height), long UNUSED_PARM(rowOffset), 
+          long UNUSED_PARM(x0), long UNUSED_PARM(y0))
 {
+  UNREFERENCED_PARM(pix);
+  UNREFERENCED_PARM(width);
+  UNREFERENCED_PARM(height);
+  UNREFERENCED_PARM(rowOffset);
+  UNREFERENCED_PARM(x0);
+  UNREFERENCED_PARM(y0);
 
   return FPX_UNIMPLEMENTED_FUNCTION;
 }

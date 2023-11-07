@@ -769,9 +769,9 @@ STDMETHODIMP_(ULONG) CExposedStream::AddRef(void)
 //
 //---------------------------------------------------------------
 
-STDMETHODIMP CExposedStream::LockRegion(ULARGE_INTEGER libOffset,
-                                        ULARGE_INTEGER cb,
-                                        DWORD dwLockType)
+STDMETHODIMP CExposedStream::LockRegion(ULARGE_INTEGER UNUSED_PARM(libOffset),
+                                        ULARGE_INTEGER UNUSED_PARM(cb),
+                                        DWORD UNUSED_PARM(dwLockType))
 {
     olDebugOut((DEB_ITRACE, "In  CExposedStream::LockRegion("
                 "%lu, %lu\n", ULIGetLow(cb), dwLockType));
@@ -794,9 +794,9 @@ STDMETHODIMP CExposedStream::LockRegion(ULARGE_INTEGER libOffset,
 //
 //---------------------------------------------------------------
 
-STDMETHODIMP CExposedStream::UnlockRegion(ULARGE_INTEGER libOffset,
-                                          ULARGE_INTEGER cb,
-                                          DWORD dwLockType)
+STDMETHODIMP CExposedStream::UnlockRegion(ULARGE_INTEGER UNUSED_PARM(libOffset),
+                                          ULARGE_INTEGER UNUSED_PARM(cb),
+                                          DWORD UNUSED_PARM(dwLockType))
 {
     olDebugOut((DEB_ITRACE, "In  CExposedStream::UnlockRegion(%lu, %lu)\n",
                 ULIGetLow(cb), dwLockType));

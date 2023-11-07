@@ -29,6 +29,7 @@
 #include "win_dct.h"
 #include "huffman.h"
 #include "fpxmem.h"
+#include  <attributes.h>
 
 #define SHIFT 128
 #define BOUND 1023
@@ -184,7 +185,7 @@ JPEG_STRUCT *jpeg_struct)
 /*
  * Return 0 if successful, -1 if EOF
  */
-int EN_Encode_Scan_Gray(unsigned char *buf, int width, int height, 
+int EN_Encode_Scan_Gray(unsigned char *buf, int width, int UNUSED_PARM(height), 
 JPEG_STRUCT *jpeg_struct )
 {
   /* Routine to create macroblocks for Grayscale images
@@ -200,6 +201,8 @@ JPEG_STRUCT *jpeg_struct )
   int block[64];
   int *iptr;
   unsigned char *buf_ptr;
+
+  UNREFERENCED_PARM(height);
 
   Clear_Last_DC(jpeg_struct);
 

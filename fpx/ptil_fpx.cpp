@@ -1182,7 +1182,7 @@ FPXStatus PTileFlashPix::Read()
       //  now.
       if ((pixelsSpace == SPACE_32_BITS_YCC)
       || (pixelsSpace == SPACE_32_BITS_YCCA)
-      || (pixelsSpace == SPACE_32_BITS_AYCC))
+      || (pixelsSpace == SPACE_32_BITS_AYCC)) {
         if (!((used == SPACE_32_BITS_YCC) 
           ||  (used == SPACE_32_BITS_YCCA)
           ||  (used == SPACE_32_BITS_AYCC))) {
@@ -1199,9 +1199,10 @@ FPXStatus PTileFlashPix::Read()
                   pixelsSpace, tmpPixelSpace);
           pixelsSpace = tmpPixelSpace;
         }
-        imageParam->GetContrast( &contrastValue);
-        Contrast( contrastValue, pixelsSpace, pixels, width * height);
       }
+      imageParam->GetContrast( &contrastValue);
+      Contrast( contrastValue, pixelsSpace, pixels, width * height);
+    }
   } 
 
   // Do the color conversion
@@ -1783,6 +1784,7 @@ FPXStatus PTileFlashPix::Contrast (
   switch(pixelsSpace) {
     case  SPACE_32_BITS_ARGB: // The 24 bits are stored in the LSB part of the long
       opac_pixel  = ((unsigned char*)pixels);
+      SWITCH_FALLTHROUGH;
     case  SPACE_32_BITS_RGB: {
       red_pixel   = ((unsigned char*)pixels) + 1;
       green_pixel = ((unsigned char*)pixels) + 2;
@@ -1800,6 +1802,7 @@ FPXStatus PTileFlashPix::Contrast (
 
     case  SPACE_32_BITS_AM:   
       opac_pixel = ((unsigned char*)pixels) + 2;
+      SWITCH_FALLTHROUGH;
     case  SPACE_32_BITS_M: {
       red_pixel  = ((unsigned char*)pixels) + 3;
       monochrome = true;
@@ -1813,6 +1816,7 @@ FPXStatus PTileFlashPix::Contrast (
     
     case  SPACE_32_BITS_AYCC: 
       opac_pixel  = ((unsigned char*)pixels);
+      SWITCH_FALLTHROUGH;
     case  SPACE_32_BITS_YCC: {
       tempSpace = SPACE_32_BITS_ARGB;
       red_pixel   = ((unsigned char*)pixels) + 1;

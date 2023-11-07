@@ -127,13 +127,15 @@
 // CHG_VIS_OUT - added visibleOutputIndex argument to be passed to PFileFlashPixView
 PFlashPixImageView::PFlashPixImageView (FicNom& refName, const char* theStorageName, 
                     long visibleOutputIndex,
-                    FPXStatus * fpxStatus) : ViewImage(refName)
+                    FPXStatus * UNUSED_PARM(fpxStatus)) : ViewImage(refName)
 
 {
   CLSID idBaseline     = ID_Baseline;
   CLSID idImageView    = ID_ImageView;
   CLSID id;
-  
+
+  UNREFERENCED_PARM(fpxStatus);
+
   // Init the file pointers
   filePtr = NULL;
   image   = NULL;
@@ -441,12 +443,14 @@ PFlashPixImageView::PFlashPixImageView (FicNom& refName, const char* theStorageN
 // CHG_VIS_OUT - added visibleOutputIndex argument to be passed to PFileFlashPixView
 PFlashPixImageView::PFlashPixImageView (OLEStorage* theOwningStorage, const char* theStorageName, 
                       mode_Ouverture openMode, long visibleOutputIndex,
-                      FPXStatus * fpxStatus ) : ViewImage()
+                      FPXStatus * UNUSED_PARM(fpxStatus) ) : ViewImage()
 
 {
   CLSID idBaseline  = ID_Baseline;
   CLSID idImageView = ID_ImageView;
   CLSID id;
+
+  UNREFERENCED_PARM(fpxStatus);
 
   internalBuffer = NULL; 
   internalBufSize = 0; 

@@ -562,21 +562,27 @@ FPXStatus FPX_SetProgressFunction ( FPXProgressFunction theProgressive)
   return FPX_OK;
 }
 
-FPXStatus FPX_GetToolkitMemoryLimit ( unsigned long * memoryLimit)
+FPXStatus FPX_GetToolkitMemoryLimit ( unsigned long * UNUSED_PARM(memoryLimit))
 
 {
+  UNREFERENCED_PARM(memoryLimit);
+
   return FPX_NO_MEMORY_MANAGEMENT;
 }
 
-FPXStatus FPX_GetToolkitMemoryAvailable ( unsigned long * availableMemory)
+FPXStatus FPX_GetToolkitMemoryAvailable ( unsigned long * UNUSED_PARM(availableMemory))
 
 {
+  UNREFERENCED_PARM(availableMemory);
+
   return FPX_NO_MEMORY_MANAGEMENT;
 }
 
-FPXStatus FPX_GetToolkitMemoryUsed ( unsigned long * usedMemory)
+FPXStatus FPX_GetToolkitMemoryUsed ( unsigned long * UNUSED_PARM(usedMemory))
 
 {
+  UNREFERENCED_PARM(usedMemory);
+
   return FPX_NO_MEMORY_MANAGEMENT;
 }
 
@@ -953,13 +959,15 @@ FPXStatus FPX_ReadImageTransformRectangle (
               float               X0,
               float               Y0,
               float               X1,
-              float               Y1,
+              float               UNUSED_PARM(Y1),
               int                 rectWidth,
               int                 rectHeight,
               FPXImageDesc*       theRectangle)
 
 {
   FPXStatus status = FPX_OK;
+
+  UNREFERENCED_PARM(Y1);
 
   if (!theFPX)
     status = FPX_INVALID_FPX_HANDLE;
@@ -1192,9 +1200,11 @@ FPXStatus FPX_GetResolutionInfo (
 
 // Not implemented in Baseline
 FPXStatus FPX_SetAlphaType (
-              FPXImageHandle*      theFPX,
-              FPXPreComputedAlpha  theAlphaType)
+              FPXImageHandle*      UNUSED_PARM(theFPX),
+              FPXPreComputedAlpha  UNUSED_PARM(theAlphaType))
 {
+  UNREFERENCED_PARM(theFPX);
+  UNREFERENCED_PARM(theAlphaType);
   //  FPXImageHandle* handle = theFPX;
   //  FPXPreComputedAlpha  a = theAlphaType;
   return FPX_UNIMPLEMENTED_FUNCTION;
@@ -1202,9 +1212,11 @@ FPXStatus FPX_SetAlphaType (
 
 // Not implemented in Baseline
 FPXStatus FPX_GetAlphaType (
-              FPXImageHandle*      theFPX,
-              FPXPreComputedAlpha* theAlphaType)
+              FPXImageHandle*      UNUSED_PARM(theFPX),
+              FPXPreComputedAlpha* UNUSED_PARM(theAlphaType))
 {
+  UNREFERENCED_PARM(theFPX);
+  UNREFERENCED_PARM(theAlphaType);
   // FPXImageHandle* handle = theFPX;
   // FPXPreComputedAlpha*  a = theAlphaType;
   return FPX_UNIMPLEMENTED_FUNCTION;
@@ -2170,10 +2182,13 @@ FPXStatus FPX_GenerateHierarchy (
  */
 
 FPXStatus FPX_SetPath(
-              FPXImageHandle *theFPX,
-              unsigned short  thePathIndex,
-              FPXPath*        thePath)
+              FPXImageHandle *UNUSED_PARM(theFPX),
+              unsigned short  UNUSED_PARM(thePathIndex),
+              FPXPath*        UNUSED_PARM(thePath))
 {
+  UNREFERENCED_PARM(theFPX);
+  UNREFERENCED_PARM(thePathIndex);
+  UNREFERENCED_PARM(thePath);
 //   FPXImageHandle *handle = theFPX;
 //   short     p = thePathIndex;
 //   FPXPath*  path= thePath;
@@ -2181,10 +2196,13 @@ FPXStatus FPX_SetPath(
 }
 
 FPXStatus FPX_GetPath(
-              FPXImageHandle *theFPX,
-              unsigned short  thePathIndex,
-              FPXPath**       thePath)
+              FPXImageHandle *UNUSED_PARM(theFPX),
+              unsigned short  UNUSED_PARM(thePathIndex),
+              FPXPath**       UNUSED_PARM(thePath))
 {
+  UNREFERENCED_PARM(theFPX);
+  UNREFERENCED_PARM(thePathIndex);
+  UNREFERENCED_PARM(thePath);
 //   FPXImageHandle *handle = theFPX;
 //   short  p = thePathIndex;
 //   FPXPath**   path= thePath;

@@ -150,7 +150,7 @@ static int ComputeNumberOfResolutions (int width, int height, int tileWidth)
 //  Methods of the PFileFlashPixIO class
 //
 //  Manage all records to an FPX file. The field "firstSubImage" points to the
-//  full resolution image which points of the /4 subimage, and so onÐ
+//  full resolution image which points of the /4 subimage, and so onï¿½
 //
 //  ----------------------------------------------------------------------------
 
@@ -178,8 +178,9 @@ PFileFlashPixIO::PFileFlashPixIO (OLEStorage* theOwningStorage, const char* theS
 //  ----------------------------------------------------------------------------
 // Open a file in Read or Write mode (compressed or uncompressed) :
 // CAUTION : the file is opened as long as necessary
-PFileFlashPixIO::PFileFlashPixIO (FicNom& refName, const char* theStorageName, mode_Ouverture openMode) : PHierarchicalImage (refName)
+PFileFlashPixIO::PFileFlashPixIO (FicNom& refName, const char* theStorageName, mode_Ouverture UNUSED_PARM(openMode)) : PHierarchicalImage (refName)
 {
+  UNREFERENCED_PARM(openMode);
   Init ();                  // Init the object
   SetTileParameter (FPX_TILE_WIDTH, FPX_TILE_WIDTH);
   storageName = theStorageName;
@@ -267,7 +268,7 @@ PFileFlashPixIO::~PFileFlashPixIO()
 {
   if (tilesHasBeenModified) {
     // CAUTION : delete sub-images before closing file because
-    // some file's information are used to close sub-imagesÐ
+    // some file's information are used to close sub-imagesï¿½
     if (firstSubImage)
       firstSubImage->CloseSubImage();
     // In write mode, we have to commit (write) all changes before deleting anything

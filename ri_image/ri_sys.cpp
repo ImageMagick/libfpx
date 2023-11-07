@@ -504,8 +504,9 @@ long PSystemToolkit::SetCompressionHandle(void* newCompressionHandle, long newHa
 }
 
 
-void PSystemToolkit::AddErrorToList(short message, OSErr err, FicNom file)
+void PSystemToolkit::AddErrorToList(short UNUSED_PARM(message), OSErr err, FicNom file)
 {
+  UNREFERENCED_PARM(message);
 
   if (PErrorsList::nbErr >= NB_MAX_ERRORS) {
     // Make room for a new error by purging the first/oldest error from the list
@@ -540,11 +541,13 @@ void PSystemToolkit::DeleteErrorsList()
 }
 
 
-OSErr PSystemToolkit::GetLastErrorFromList( FicNom file)
+OSErr PSystemToolkit::GetLastErrorFromList( FicNom UNUSED_PARM(file))
 {
   PErrorsList*  last;
   OSErr     lastError = 0;
-  
+
+  UNREFERENCED_PARM(file);
+
   if (errorsList != NULL) {
     last = errorsList;
     while (last->nextError != NULL)

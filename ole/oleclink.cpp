@@ -323,10 +323,12 @@ OLECustomLink::~OLECustomLink()
 
 // Read the Custom Link property set (straightforward...)
 
-Boolean OLECustomLink::GetCustomLinkPropertySet (OLEPropertySet* customLinkSet, FPXCustomLink* customLinkDescriptor)
+Boolean OLECustomLink::GetCustomLinkPropertySet (OLEPropertySet* UNUSED_PARM(customLinkSet), FPXCustomLink* UNUSED_PARM(customLinkDescriptor))
 {
 #if defined(_UNIX)
   // TODO: put moniker support into oless for UNIX (if needed??)
+  UNREFERENCED_PARM(customLinkSet);
+  UNREFERENCED_PARM(customLinkDescriptor);
   return false;
 #else
 
@@ -420,11 +422,13 @@ Boolean OLECustomLink::GetCustomLinkPropertySet (OLEPropertySet* customLinkSet, 
 #endif
 }
 
-HRESULT OLECustomLink::BindMonikerToStorage (IStream* lpStream, IStorage** pStg)
+HRESULT OLECustomLink::BindMonikerToStorage (IStream* UNUSED_PARM(lpStream), IStorage** UNUSED_PARM(pStg))
 {
 #if defined(_UNIX)
-        return false;
-        // TODO: put Moniker support in for UNIX (if needed??)
+    UNREFERENCED_PARM(lpStream);
+    UNREFERENCED_PARM(pStg);
+    return false;
+    // TODO: put Moniker support in for UNIX (if needed??)
 #else 
     IMoniker *pmk = NULL;
     HRESULT status;

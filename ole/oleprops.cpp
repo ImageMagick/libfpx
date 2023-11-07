@@ -149,8 +149,9 @@ Boolean OLEPropertySet::Revert( )
 }
 
 // Display the entire property set
-Boolean OLEPropertySet::Display( ofstream * pLogStream )
+Boolean OLEPropertySet::Display( ofstream * UNUSED_PARM(pLogStream) )
 {
+  UNREFERENCED_PARM(pLogStream);
 #if defined(__GNUC__)
   return false;
 #else
@@ -508,9 +509,10 @@ Boolean OLEPropertySection::Write()
 }
 
 // Display a property section
-Boolean OLEPropertySection::Display( ofstream * pLogStream )
+Boolean OLEPropertySection::Display( ofstream * UNUSED_PARM(pLogStream) )
 {
 #if defined(__GNUC__)
+  UNREFERENCED_PARM(pLogStream);
   return false;
 #else
   char  str[512];

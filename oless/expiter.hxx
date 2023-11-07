@@ -74,8 +74,7 @@ private:
 
 inline SCODE CExposedIterator::Validate(void) const 
 { 
-    return (this == NULL ||
-            _sig != CEXPOSEDITER_SIG) ? STG_E_INVALIDHANDLE : S_OK; 
+    return (_sig != CEXPOSEDITER_SIG) ? STG_E_INVALIDHANDLE : S_OK; 
 }
 
 #endif

@@ -304,7 +304,7 @@ protected:
 
 inline SCODE CExposedDocFile::Validate(void) const
 {
-    return (this == NULL || _sig != CEXPOSEDDOCFILE_SIG) ?
+    return (_sig != CEXPOSEDDOCFILE_SIG) ?
   STG_E_INVALIDHANDLE : S_OK;
 }
 

@@ -60,6 +60,7 @@
 
 #include  "b_memory.h"  
 #include  "b_error.h"
+#include  <attributes.h>
 
 
 //  Constants
@@ -380,9 +381,12 @@ OSErr FicNom::Exist() const
 
 
 // File name starting with a period (.) are forbidden (see Inside Macintosh : Files, p.2-173)
-OSErr FicNom::CheckNameWithPeriod(Boolean withDialog) const
+OSErr FicNom::CheckNameWithPeriod(Boolean UNUSED_PARM(withDialog)) const
 {
   OSErr err = noErr;
+
+  UNREFERENCED_PARM(withDialog);
+
   if (*(nom.Texte()) == '.')
     err = badFidErr;
   return err;
@@ -456,9 +460,10 @@ long FicNom::PlaceDisponible() const
 }
 
 // Get the size of the file (in KBytes)
-OSErr FicNom::GetSize(long* sizeInKBytes)
+OSErr FicNom::GetSize(long* UNUSED_PARM(sizeInKBytes))
 {
-  
+  UNREFERENCED_PARM(sizeInKBytes);
+
 #ifdef macintosh
   OSErr err = noErr;
 
@@ -733,7 +738,7 @@ OSErr FicNom::SearchWithCriteria (FSSpec* tableauDeFSSpec, long* nbReponse, sear
 
 /* Search file routine in a given folder. This routine hides PBGetCatInfoSync() problems*/
 /* see Inside Macintosh : Files for PBGetCatInfo documentation            */
-/* see Lettre des DÄveloppeurs Apple ní23/DÄcembre 1992, p.10             */
+/* see Lettre des Dï¿½veloppeurs Apple nï¿½23/Dï¿½cembre 1992, p.10             */
 
 OSErr FicNom::SearchInFolder (FSSpec* tableauDeFSSpec, long* nbReponse, ptr_FicNom sourceFolder, searchCriteria what, Boolean into)
 {
@@ -1014,10 +1019,12 @@ void FicNom::GetNewLocation()
 }
 #endif
 
-OSErr FicNom::Copy(const FicNom& newFileName)
+OSErr FicNom::Copy(const FicNom& UNUSED_PARM(newFileName))
 {
   OSErr err;
-  
+
+  UNREFERENCED_PARM(newFileName);
+
 #ifdef macintosh
   err = FileCopy(this->volume, this->directory, this->nom, 
                  newFileName.volume, newFileName.directory, NULL , newFileName.nom,
@@ -1031,9 +1038,11 @@ OSErr FicNom::Copy(const FicNom& newFileName)
 
 
 
-OSErr FicNom::Rename(const FicNom& newFileName)
+OSErr FicNom::Rename(const FicNom& UNUSED_PARM(newFileName))
 {
   OSErr err;
+
+  UNREFERENCED_PARM(newFileName);
 #ifdef macintosh
   FSSpec mySpec;
   CopyToFSSpec (mySpec);
@@ -1045,9 +1054,10 @@ OSErr FicNom::Rename(const FicNom& newFileName)
   return err;
 }
 
-OSErr FicNom::Move(const FicNom& newFileName)
+OSErr FicNom::Move(const FicNom& UNUSED_PARM(newFileName))
 {
   OSErr err;
+  UNIMPLEMENTED_PARM(newFileName);
 #ifdef macintosh
   if (volume != newFileName.volume)
     return (diffVolErr);

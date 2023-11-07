@@ -173,7 +173,7 @@ CFileILB::~CFileILB()
     delete[] _pszName;
 }
 
-STDMETHODIMP CFileILB::QueryInterface(REFIID riid, LPVOID FAR* ppvObj)
+STDMETHODIMP CFileILB::QueryInterface(REFIID UNUSED_PARM(riid), LPVOID FAR* ppvObj)
 {
     *ppvObj = NULL;
     UNREFERENCED_PARM(riid);
@@ -246,9 +246,9 @@ STDMETHODIMP CFileILB::SetSize(ULARGE_INTEGER cb)
     return NOERROR;
 }
 
-STDMETHODIMP CFileILB::LockRegion(ULARGE_INTEGER libOffset,
-                                  ULARGE_INTEGER cb,
-                                  DWORD dwLockType)
+STDMETHODIMP CFileILB::LockRegion(ULARGE_INTEGER UNUSED_PARM(libOffset),
+                                  ULARGE_INTEGER UNUSED_PARM(cb),
+                                  DWORD UNUSED_PARM(dwLockType))
 {
     UNREFERENCED_PARM(dwLockType);
     UNREFERENCED_PARM(cb);
@@ -258,9 +258,9 @@ STDMETHODIMP CFileILB::LockRegion(ULARGE_INTEGER libOffset,
 }
 
 
-STDMETHODIMP CFileILB::UnlockRegion(ULARGE_INTEGER libOffset,
-        ULARGE_INTEGER cb,
-        DWORD dwLockType)
+STDMETHODIMP CFileILB::UnlockRegion(ULARGE_INTEGER UNUSED_PARM(libOffset),
+        ULARGE_INTEGER UNUSED_PARM(cb),
+        DWORD UNUSED_PARM(dwLockType))
 {
     UNREFERENCED_PARM(dwLockType);
     UNREFERENCED_PARM(cb);

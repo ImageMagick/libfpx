@@ -6,6 +6,7 @@
  */
 
 #include "h/owchar.h"
+#include <attributes.h>
 #include <errno.h>
 #include <string.h>
 
@@ -386,16 +387,19 @@ WCHAR* _CRTAPI1 wcsncpy ( WCHAR * dest, const WCHAR * source, size_t count )
        but that does not matter in the reference implementation */
  
 int STDCALL WideCharToMultiByte(
-    unsigned int CodePage,         /* code page */
-    unsigned long dwFlags,         /* performance and mapping flags */
-    const WCHAR* lpWideCharStr,    /* address of wide-character string */
-    int cchWideChar,               /* number of characters in string */
-    char* lpMultiByteStr,          /* address of buffer for new string */
-    int cchMultiByte,              /* size of buffer  */
-    const char* lpDefaultChar,     /* addr of default for unmappable chars */
-    int* lpUsedDefaultChar         /* addr of flag set when default char. used */
+    unsigned int CodePage,                  /* code page */
+    unsigned long UNUSED_PARM(dwFlags),     /* performance and mapping flags */
+    const WCHAR* lpWideCharStr,             /* address of wide-character string */
+    int cchWideChar,                        /* number of characters in string */
+    char* lpMultiByteStr,                   /* address of buffer for new string */
+    int cchMultiByte,                       /* size of buffer  */
+    const char* UNUSED_PARM(lpDefaultChar), /* addr of default for unmappable chars */
+    int* lpUsedDefaultChar                  /* addr of flag set when default char. used */
    )
 {
+  UNREFERENCED_PARM(dwFlags);
+  UNREFERENCED_PARM(lpDefaultChar);
+
   /* only support UNICODE or US ANSI */
   if ((CodePage!=0) && (CodePage!=1252)) 
     {
@@ -436,13 +440,14 @@ int STDCALL WideCharToMultiByte(
 
 int STDCALL MultiByteToWideChar(
     unsigned int CodePage,              /* code page */
-    unsigned long dwFlags,              /* character-type options  */
-    const char * lpMultiByteStr,  /* address of string to map  */
-    int cchMultiByte,           /* number of characters in string  */
-    WCHAR* lpWideCharStr, /* address of wide-character buffer  */
-    int cchWideChar             /* size of buffer  */
+    unsigned long UNUSED_PARM(dwFlags), /* character-type options  */
+    const char * lpMultiByteStr,        /* address of string to map  */
+    int cchMultiByte,                   /* number of characters in string  */
+    WCHAR* lpWideCharStr,               /* address of wide-character buffer  */
+    int cchWideChar                     /* size of buffer  */
    )
 {
+  UNREFERENCED_PARM(dwFlags);
   /* only support UNICODE or US ANSI */
   if ((CodePage!=0) && (CodePage!=1252))
     { 

@@ -109,10 +109,9 @@ const char INVALIDCHARS[] = "\\/:!";
 
 SCODE CheckAName(char const *pwcsName)
 {
-    SCODE sc;
     olDebugOut((DEB_ITRACE, "In  CheckAName(%s)\n", pwcsName));
     if (FAILED(ValidateNameA(pwcsName, CBMAXPATHCOMPLEN)))
-        return sc;
+        return STG_E_INVALIDNAME;
     // >= is used because the max len includes the null terminator
     if (strlen(pwcsName) >= CWCMAXPATHCOMPLEN)
         return STG_E_INVALIDNAME;

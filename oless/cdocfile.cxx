@@ -80,7 +80,7 @@ SCODE CDocFile::InitFromEntry(CStgHandle *pstghParent,
 
 
 SCODE CDocFile::CreateDocFile(CDfName const *pdfn,
-                              DFLAGS const df,
+                              DFLAGS const UNUSED_PARM(df),
                               DFLUID dlSet,
                               CDocFile **ppdfDocFile)
 {
@@ -129,7 +129,7 @@ EH_Err:
 
 
 SCODE CDocFile::GetDocFile(CDfName const *pdfn,
-                           DFLAGS const df,
+                           DFLAGS const UNUSED_PARM(df),
                            CDocFile **ppdfDocFile)
 {
     CDocFile *pdf;
@@ -215,7 +215,7 @@ SCODE CDocFile::RenameEntry(CDfName const *pdfnName,
 
 
 SCODE CDocFile::DestroyEntry(CDfName const *pdfnName,
-                             BOOL fClean)
+                             BOOL UNUSED_PARM(fClean))
 {
     SCODE sc;
 

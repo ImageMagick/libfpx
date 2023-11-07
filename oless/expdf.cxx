@@ -1140,7 +1140,6 @@ STDMETHODIMP CExposedDocFile::SetClass(REFCLSID clsid)
     olDebugOut((DEB_ITRACE, "In  CExposedDocFile::SetClass:%p(?)\n", this));
 
     olChk(Validate());
-    olChk(ValidateBuffer(&clsid, sizeof(CLSID)));
     olChk(CheckReverted());
     if (!P_WRITE(_df))
         olErr(EH_Err, STG_E_ACCESSDENIED);
@@ -1530,7 +1529,7 @@ EH_Err:
 //----------------------------------------------------------------------------
 
 
-STDMETHODIMP CExposedDocFile::SwitchToFile(TCHAR *ptcsFile)
+STDMETHODIMP CExposedDocFile::SwitchToFile(TCHAR *UNUSED_PARM(ptcsFile))
 {
     UNREFERENCED_PARM(ptcsFile);
     olAssert(FALSE && aMsg("Unimplemented Function called!\n"));

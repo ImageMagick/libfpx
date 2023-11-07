@@ -671,7 +671,7 @@ SCODE  CMStream::GetName(SID const sid, CDfName *pdfn)
 //
 //--------------------------------------------------------------------------
 
-SCODE  CMStream::FlushHeader(USHORT uForce)
+SCODE  CMStream::FlushHeader(USHORT UNUSED_PARM(uForce))
 {
     ULONG ulTemp;
     SCODE sc;
@@ -973,7 +973,7 @@ Err:
 //
 //--------------------------------------------------------------------------
 
-SCODE ILBFlush(ILockBytes *pilb, BOOL fFlushCache)
+SCODE ILBFlush(ILockBytes *pilb, BOOL UNUSED_PARM(fFlushCache))
 {    
     SCODE sc;
     UNREFERENCED_PARM(fFlushCache);  // no cache used here

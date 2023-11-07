@@ -66,7 +66,7 @@ inline void CDirEntry::SetSize(const ULONG ulSize)
 inline void CDirEntry::SetFlags(const MSENTRYFLAGS mse)
 {
     msfAssert(mse <= 0xff);
-    _mse = (const BYTE) mse;
+    _mse = (BYTE) mse;
 }
 
 inline void CDirEntry::SetBitFlags(BYTE bValue, BYTE bMask)

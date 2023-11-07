@@ -191,7 +191,7 @@ private:
 
 inline SCODE CExposedStream::Validate(void) const
 {
-    return (this == NULL || _sig != CEXPOSEDSTREAM_SIG) ?
+    return (_sig != CEXPOSEDSTREAM_SIG) ?
 
   STG_E_INVALIDHANDLE : S_OK;
 }

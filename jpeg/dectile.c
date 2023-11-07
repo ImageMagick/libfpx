@@ -29,6 +29,7 @@
 #include "djpeg.h"
 #include "dparser.h"
 #include "fpxmem.h"
+#include <attributes.h>
 
 static int warning_type = 0;
 
@@ -357,8 +358,8 @@ SCAN **ret_scan)
 }
 
 static void
-Free_All_Memory(DB_STATE *db_state,
-FRAME **frame,
+Free_All_Memory(DB_STATE *UNUSED_PARM(db_state),
+FRAME **UNUSED_PARM(frame),
 DHUFF_TABLE *huffman_tables_dc[4],
 DHUFF_TABLE *huffman_tables_ac[4],
 QUANT_TABLE *quant_tables[4],
@@ -366,6 +367,9 @@ DECODER_STRUCT *decoder)
 {
   int i, tc;
   int ntab;
+
+  UNREFERENCED_PARM(db_state);
+  UNREFERENCED_PARM(frame);
 
   DECODER_STRUCT *decoderPtr = (DECODER_STRUCT *)decoder;
 

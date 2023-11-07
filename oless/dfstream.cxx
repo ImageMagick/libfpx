@@ -31,7 +31,7 @@
 
 
 SCODE CDocFile::CreateStream(CDfName const *pdfn,
-                             DFLAGS const df,
+                             DFLAGS const UNUSED_PARM(df),
                              DFLUID dlSet,
                              CDirectStream **ppstStream)
 {
@@ -79,7 +79,7 @@ EH_Err:
 
 
 SCODE CDocFile::GetStream(CDfName const *pdfn,
-                          DFLAGS const df,
+                          DFLAGS const UNUSED_PARM(df),
                           CDirectStream **ppstStream)
 {
     SCODE sc;

@@ -237,14 +237,7 @@ EXTERN_C STDAPI_(BOOL) IsEqualGUID(REFGUID rguid1, REFGUID rguid2);
 #define IID_NULL GUID_NULL
 #define CLSID_NULL GUID_NULL
 
-#ifdef __GNUC__ /* Use the -Wno-unused-parameter */
-#define UNIMPLEMENTED_PARM(x)
-#define UNREFERENCED_PARM(x)
-#else
-// Use these to 'refer' to the formal parameters that we are not using
-#define UNIMPLEMENTED_PARM(x)   (x)
-#define UNREFERENCED_PARM(x)    (x)
-#endif
+#include <attributes.h>
 
 /************** Debugging Stuff  *******************************************/
 

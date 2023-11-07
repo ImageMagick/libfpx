@@ -30,6 +30,7 @@
 #include "dhuff.h"
 #include "chen_dct.h"
 #include "fpxmem.h"
+#include <attributes.h>
 
 #ifdef USE_ALL_TABLES
 #define USE_SMALL_TABLES
@@ -293,12 +294,14 @@ Decode_MCU_Chen(
   DB_STATE *db_state,
   SCAN *scan,
   int *dp_last_dc,
-  int interleave) 
+  int UNUSED_PARM(interleave))
 {
     int i, j;
     int *quant_table;
     int blockin[64];
     SCAN_COMPONENT *comp;
+
+    UNREFERENCED_PARM(interleave);
 
     if (scan->gray_scale) {
         comp = scan->comps;
@@ -332,12 +335,14 @@ Decode_MCU_Winograd(
   DB_STATE *db_state,
   SCAN *scan,
   int *dp_last_dc,
-  int interleave)
+  int UNUSED_PARM(interleave))
 {
     int i, j;
     int *quant_table;
     int block[64];
     SCAN_COMPONENT *comp;
+
+    UNREFERENCED_PARM(interleave);
 
     if (scan->gray_scale) {
         comp = scan->comps;
@@ -375,11 +380,13 @@ Decode_MCU_Pruned_Winograd(
   DB_STATE *db_state,
   SCAN *scan,
   int *dp_last_dc,
-  int interleave)
+  int UNUSED_PARM(interleave))
 {
     int i, j;
     int *quant_table, block[64];
     SCAN_COMPONENT *comp;
+
+    UNREFERENCED_PARM(interleave);
 
     if (scan->gray_scale) {
         comp = scan->comps;
@@ -441,10 +448,12 @@ Write_Blank_MCUs(
   DB_STATE *db_state,
   int nMCU,
   SCAN *scan,
-  int interleave)
+  int UNUSED_PARM(interleave))
 {
     int i, j, ncomps, bi;
     SCAN_COMPONENT *comp;
+
+    UNREFERENCED_PARM(interleave);
 
     ncomps = (scan->gray_scale) ? 1 : scan->ncomps;
     for (; nMCU > 0; nMCU--) {

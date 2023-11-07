@@ -392,7 +392,7 @@ Err:
 //
 //---------------------------------------------------------------------------
 
-SCODE CFat::Init(CMStream *pmsParent, FSINDEX cFatSect, BOOL fConvert)
+SCODE CFat::Init(CMStream *pmsParent, FSINDEX cFatSect, BOOL UNUSED_PARM(fConvert))
 {
     SCODE sc;
     UNREFERENCED_PARM(fConvert);

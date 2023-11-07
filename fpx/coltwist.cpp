@@ -34,6 +34,8 @@
   #include "fpxlibio.h"
 #endif
 
+#include <attributes.h>
+
 //  Constants
 //  ---------
 
@@ -491,6 +493,7 @@ Boolean PColorTwist::ApplyToPixelBuffer(Pixel* pixels, FPXBaselineColorSpace col
     case  SPACE_32_BITS_ARGB: // The 24 bits are stored in the LSB part of the long
     case  SPACE_32_BITS_AYCC:
       alpha_pixel = ((unsigned char*)pixels) + 0;
+      SWITCH_FALLTHROUGH;
     case  SPACE_32_BITS_RGB:
     case  SPACE_32_BITS_YCC:
       {

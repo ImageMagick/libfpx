@@ -72,7 +72,7 @@ public:
     inline SCODE CreateDocFile(CDfName const *pdfnName,
                                DFLAGS const df,
                                DFLUID luidSet,
-                               DWORD const dwType,
+                               DWORD const UNUSED_PARM(dwType),
                                CDocFile **ppdfDocFile)
     { UNREFERENCED_PARM(dwType);
     return CreateDocFile(pdfnName, df, luidSet, ppdfDocFile); }
@@ -82,7 +82,7 @@ public:
                      CDocFile **ppdfDocFile);
     inline SCODE GetDocFile(CDfName const *pdfnName,
                             DFLAGS const df,
-                            DWORD const dwType,
+                            DWORD const UNUSED_PARM(dwType),
                             CDocFile **ppdfDocFile)
     { UNREFERENCED_PARM(dwType);
     return GetDocFile(pdfnName, df, ppdfDocFile); }
@@ -96,7 +96,7 @@ public:
     inline SCODE CreateStream(CDfName const *pdfnName,
                               DFLAGS const df,
                               DFLUID luidSet,
-                              DWORD const dwType,
+                              DWORD const UNUSED_PARM(dwType),
                               CDirectStream **ppStream)
     {
       UNREFERENCED_PARM(dwType);
@@ -108,7 +108,7 @@ public:
                     CDirectStream **ppStream);
     inline SCODE GetStream(CDfName const *pdfnName,
                            DFLAGS const df,
-                           DWORD const dwType,
+                           DWORD const UNUSED_PARM(dwType),
                            CDirectStream **ppStream)
     {
       UNREFERENCED_PARM(dwType);

@@ -390,10 +390,12 @@ void PCompressorSinColor::SetCompressionParameters(short numChannels)
 }
 
 Boolean PCompressorSinColor::Compress(unsigned char *  uncompressedData, 
-                      short width, short height,
+                      short UNUSED_PARM(width), short UNUSED_PARM(height),
                         unsigned char ** pcompressedData, 
                         long* sizeCompressed)
 {
+  UNREFERENCED_PARM(width);
+  UNREFERENCED_PARM(height);
   // Allocate the data buffer if it doesn't exist
   if ( !dataBufPresent ) {
     dataBuffer = new unsigned char[sizeof(Pixel)]; 

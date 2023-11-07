@@ -126,7 +126,7 @@ inline CMSFPage::~CMSFPage()
 //
 //----------------------------------------------------------------------------
 
-inline void * CMSFPage::operator new(size_t size, size_t sizeData)
+inline void * CMSFPage::operator new(size_t UNUSED_PARM(size), size_t sizeData)
 {
     msfAssert(size == sizeof(CMSFPage));
     UNREFERENCED_PARM(size);  // for the retail build

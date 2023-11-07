@@ -701,11 +701,12 @@ Boolean OLEStorage::OpenHeaderStream(const char *name, OLEHeaderStream ** curHea
 }
 
 // This function dumps the stats of all objects within an open stroage to a stream
-Boolean OLEStorage::DumpStats( ofstream& statStream )
+Boolean OLEStorage::DumpStats( ofstream& UNUSED_PARM(statStream) )
 {
 #if   defined(__GNUC__)
   // This function is only used for debugging the contents of a storage so
   // it is not *STRICTLY* necessary.
+  UNREFERENCED_PARM(statStream);
   return false;
 #else
   // The number of indentation in the embedding storages

@@ -44,7 +44,7 @@ SCODE DfFromLB(ILockBytes *plst,
                DWORD dwStartFlags,
                SNBW snbExclude,
                CExposedDocFile **ppdfExp,
-               CLSID *pcid)
+               CLSID *UNUSED_PARM(pcid))
 {
     SCODE sc, scConv;
     CRootExposedDocFile *prpdf;

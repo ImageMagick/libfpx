@@ -24,6 +24,7 @@
 
 #include "decoder.h"
 #include "fpxmem.h"
+#include <attributes.h>
 
 #ifndef FALSE
 #define FALSE 0
@@ -720,7 +721,7 @@ static int dJPEG_Upsample411AndConvert(unsigned char *dataBuffer,
 
 
 static int dJPEG_Upsample4114AndConvert(unsigned char *dataBuffer,
-                                        void *decoder)
+                                        void *UNUSED_PARM(decoder))
 {
   /*
   ** Y1 Y2 Y3 Y4 Cr Cb A A A A  format becomes two rows of 
@@ -735,6 +736,8 @@ static int dJPEG_Upsample4114AndConvert(unsigned char *dataBuffer,
   long onedstrowinBytes;
   unsigned long dstSize;
   unsigned char Y1,Y2,Y3,Y4,cr,cb,A1,A2,A3,A4;
+
+  UNREFERENCED_PARM(decoder);
 
   onedstrowinBytes = 256; /* 64*num_channels */
   srcPtr = dataBuffer;
@@ -902,7 +905,7 @@ static int dJPEG_Upsample422AndConvert(unsigned char *dataBuffer,
 
 static int dJPEG_Upsample4224AndConvert(unsigned char *dataBuffer, 
                                         size_t oneTile_inBytes, 
-                                        void *decoder)
+                                        void *UNUSED_PARM(decoder))
 {
   /*
   ** Y1Y2u1v1A1A2 Y3Y4u2v2A3A4 .... Y63Y64u32v32A63A64 
@@ -916,6 +919,8 @@ static int dJPEG_Upsample4224AndConvert(unsigned char *dataBuffer,
   unsigned long size, i, jump;
   unsigned char tempBuffer[16384];
   unsigned char *destptr;
+
+  UNREFERENCED_PARM(decoder);
 
   srcptr = dataBuffer;
   destptr = tempBuffer;
