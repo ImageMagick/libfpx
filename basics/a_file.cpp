@@ -50,7 +50,7 @@
 #endif
 
 #include  "debug.h"
-#include  <attributes.h>
+#include "fpxattributes.h"
 
 //  Constants
 //  ---------

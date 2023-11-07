@@ -237,7 +237,7 @@ EXTERN_C STDAPI_(BOOL) IsEqualGUID(REFGUID rguid1, REFGUID rguid2);
 #define IID_NULL GUID_NULL
 #define CLSID_NULL GUID_NULL
 
-#include <attributes.h>
+#include "fpxattributes.h"
 
 /************** Debugging Stuff  *******************************************/
 

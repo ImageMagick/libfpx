@@ -6,7 +6,7 @@
  */
 
 #include "h/owchar.h"
-#include <attributes.h>
+#include "fpxattributes.h"
 #include <errno.h>
 #include <string.h>
 

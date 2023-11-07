@@ -30,7 +30,7 @@
 #include "dhuff.h"
 #include "chen_dct.h"
 #include "fpxmem.h"
-#include <attributes.h>
+#include "fpxattributes.h"
 
 #ifdef USE_ALL_TABLES
 #define USE_SMALL_TABLES

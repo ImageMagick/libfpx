@@ -34,7 +34,7 @@
   #include "fpxlibio.h"
 #endif
 
-#include <attributes.h>
+#include "fpxattributes.h"
 
 //  Constants
 //  ---------

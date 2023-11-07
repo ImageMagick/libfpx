@@ -24,7 +24,7 @@
 
 #include "decoder.h"
 #include "fpxmem.h"
-#include <attributes.h>
+#include "fpxattributes.h"
 
 #ifndef FALSE
 #define FALSE 0

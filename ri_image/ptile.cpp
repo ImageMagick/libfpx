@@ -57,7 +57,7 @@
   #include "pres_fpx.h"
 #endif  
 
-#include <attributes.h>
+#include "fpxattributes.h"
 
 //  Constants
 //  ---------

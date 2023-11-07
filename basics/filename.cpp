@@ -60,7 +60,7 @@
 
 #include  "b_memory.h"  
 #include  "b_error.h"
-#include  <attributes.h>
+#include "fpxattributes.h"
 
 
 //  Constants

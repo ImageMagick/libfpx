@@ -29,7 +29,7 @@
 #include "win_dct.h"
 #include "huffman.h"
 #include "fpxmem.h"
-#include  <attributes.h>
+#include "fpxattributes.h"
 
 #define SHIFT 128
 #define BOUND 1023

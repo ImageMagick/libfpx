@@ -29,7 +29,7 @@
 #include "djpeg.h"
 #include "dparser.h"
 #include "fpxmem.h"
-#include <attributes.h>
+#include "fpxattributes.h"
 
 static int warning_type = 0;
 
