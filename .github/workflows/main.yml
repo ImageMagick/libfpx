@@ -6,6 +6,9 @@ on:
     branches:
     - main
 
+permissions:
+  contents: read
+
 name: main
 jobs:
   build_linux:
@@ -15,26 +18,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
 
-    - name: Install dependencies
-      run: |
-        set -e
-        export DEBIAN_FRONTEND=noninteractive
-        apt-get update && \
-        apt-get install -y autoconf gcc g++ git libtool locales make pkg-config
+      - name: Install dependencies
+        run: |
+          set -e
+          export DEBIAN_FRONTEND=noninteractive
+          apt-get update && \
+          apt-get install -y autoconf gcc g++ git libtool locales make pkg-config
 
-    - name: Configure Libfpx
-      env:
-        CFLAGS: '-Wall -Wextra -Werror -Wno-error=deprecated-copy -Wno-error=class-memaccess'
-        CXXFLAGS: '-Wall -Wextra -Werror -Wno-error=deprecated-copy -Wno-error=class-memaccess'
-      run: |
-        autoreconf -fiv
-        ./configure
+      - name: Configure Libfpx
+        env:
+          CFLAGS: '-Wall -Wextra -Werror -Wno-error=deprecated-copy -Wno-error=class-memaccess'
+          CXXFLAGS: '-Wall -Wextra -Werror -Wno-error=deprecated-copy -Wno-error=class-memaccess'
+        run: |
+          autoreconf -fiv
+          ./configure
 
-    - name: Build Libfpx
-      run: |
-        set -e
-        make
-        make check
-        make install
+      - name: Build Libfpx
+        run: |
+          set -e
+          make
+          make check
+          make install
